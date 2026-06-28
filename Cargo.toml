@@ -1,0 +1,70 @@
+[package]
+name = "pptx-rs"
+version = "0.2.0"
+edition = "2021"
+description = "Rust 版本的 PowerPoint .pptx 读写库, 对标 python-pptx"
+license = "MIT"
+readme = "README.md"
+keywords = ["pptx", "powerpoint", "office-open-xml", "opc", "drawingml"]
+categories = ["parser-implementations", "encoding"]
+# 发布到 crates.io 时需替换为真实仓库地址
+repository = "https://github.com/pptx-rs/pptx-rs"
+homepage = "https://github.com/pptx-rs/pptx-rs"
+documentation = "https://docs.rs/pptx-rs"
+authors = ["pptx-rs contributors"]
+# 发布时排除测试样本、Python 验证脚本、临时文件等非必要资源
+exclude = [
+    "_test/",
+    "_test_out/",
+    "pyscripts/",
+    ".trae/",
+    "docs/",
+    "examples/",
+    "_ssh_pass.bat",
+    "_ssh_run.ps1",
+    "check_*.py",
+    "gen_ref.py",
+    "debug-pptx-output-fail.md",
+]
+
+[lib]
+name = "pptx"
+path = "src/lib.rs"
+
+[dependencies]
+zip = { version = "8.6", default-features = false, features = ["deflate"] }
+quick-xml = { version = "0.40", features = ["serialize"] }
+thiserror = "1.0"
+base64 = "0.22"
+sha2 = "0.10"
+sha1 = "0.10"
+aes = "0.8"
+cbc = { version = "0.1", features = ["alloc"] }
+cfb = "0.10"
+hmac = "0.12"
+rand = "0.8"
+uuid = "1"
+
+[dev-dependencies]
+tempfile = "3.27"
+rand = "0.8"
+criterion = "0.5"
+
+# 性能基准测试（TODO-040）：cargo bench 自动发现 benches/ 下文件
+[[bench]]
+name = "save_pptx"
+harness = false
+
+[[bench]]
+name = "large_pptx"
+harness = false
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+
+# 基准测试专用 profile：保留调试信息以便 perf 分析，但开启优化
+[profile.bench]
+opt-level = 3
+debug = true

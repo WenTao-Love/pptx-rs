@@ -1,0 +1,496 @@
+================================================================================
+SpContainer 结构对比分析
+================================================================================
+原始文件: d:\xwtwork\xdemo\realtime-screen-ocr-rust\pptx-rs\_test\心理账户理论.ppt
+水印文件: d:\xwtwork\xdemo\realtime-screen-ocr-rust\pptx-rs\_test_out\wm_心理账户理论.ppt
+说明: 使用 RT_SLIDE=0x03EE (Slide)，而非 0x03F8 (MainMaster)
+
+################################################################################
+# 文件标签: 原始文件
+# 文件路径: d:\xwtwork\xdemo\realtime-screen-ocr-rust\pptx-rs\_test\心理账户理论.ppt
+################################################################################
+PowerPoint Document stream 大小: 329217 字节
+找到 47 个 Slide (recType=0x03EE)
+
+======================================================================
+--- Slide 1 (offset=0x1868D) ---
+======================================================================
+Slide header: ver=0xF inst=0x000 type=0x03EE len=6197
+PPDrawing offset: 0x186CD (ver=0xF inst=0x000 type=0x040C len=5928)
+SpgrContainer offset: 0x186D5 (ver=0xF inst=0x000 type=0xF002 len=5920)
+SpContainer 数量: 1
+
+  ======================================================================
+  SpContainer 1/1 (offset=0x186ED)
+  ======================================================================
+  SpContainer (offset=0x186ED, ver=0xF, inst=0x000, type=0xF003, len=5896)
+  总长度（含 header）: 5904 字节
+  子 record 数量: 6
+  子 record 顺序:
+    [0] offset=0x186F5 ver=0xF inst=0x000 type=0xF004 (SpContainer(F004变体)) len=40
+    [1] offset=0x18725 ver=0xF inst=0x000 type=0xF004 (SpContainer(F004变体)) len=288
+    [2] offset=0x1884D ver=0xF inst=0x000 type=0xF004 (SpContainer(F004变体)) len=152
+    [3] offset=0x188ED ver=0xF inst=0x000 type=0xF004 (SpContainer(F004变体)) len=2445
+    [4] offset=0x19282 ver=0xF inst=0x000 type=0xF004 (SpContainer(F004变体)) len=2493
+    [5] offset=0x19C47 ver=0xF inst=0x000 type=0xF004 (SpContainer(F004变体)) len=430
+
+  --- 各子 record 详细解析 ---
+
+  [0] SpContainer(F004变体) (offset=0x186F5, ver=0xF, inst=0x000, len=40)
+    F004 Container 详细（递归解析内部 record）:
+      内部子 record 数量: 2
+      [0] offset=0x186FD ver=0x1 inst=0x000 type=0xF009 (FSPGR) len=16
+        FSPGR: left=0 top=0 right=0 bottom=0
+      [1] offset=0x18715 ver=0x2 inst=0x000 type=0xF00A (ClientAnchor) len=8
+        ClientAnchor: ver=2 len=8 values=[3072, 0, 5, 0]
+
+  [1] SpContainer(F004变体) (offset=0x18725, ver=0xF, inst=0x000, len=288)
+    F004 Container 详细（递归解析内部 record）:
+      内部子 record 数量: 5
+      [0] offset=0x1872D ver=0x2 inst=0x001 type=0xF00A (ClientAnchor) len=8
+        ClientAnchor: ver=2 len=8 values=[3074, 0, 544, 0]
+      [1] offset=0x1873D ver=0x3 inst=0x010 type=0xF00B (ClientData) len=120
+        raw hex: 0400000000007f000100ef01800000c0b210810030650100820098b20000830030650100840098b20000850000000000870002000000880000000000bf000400
+      [2] offset=0x187BD ver=0x0 inst=0x000 type=0xF010 (FSPGR) len=8
+        raw hex: 8701af01cf14e704
+      [3] offset=0x187CD ver=0xF inst=0x000 type=0xF011 (FConnector) len=28
+        raw hex: 0000c30b08000000ffffffff0f00cf0000001f040400000002140000
+      [4] offset=0x187F1 ver=0xF inst=0x000 type=0xF00D (ClientTextbox(container)) len=84
+        ClientTextbox 子 record 数: 4
+          TextHeaderAtom (len=4)
+            txType: 6
+          TextCharsAtom (len=8)
+            文本: '心理账户'
+          StyleAtom/TextRulerAtom (len=26)
+          Unknown(0x0FAA) (len=14)
+
+  [2] SpContainer(F004变体) (offset=0x1884D, ver=0xF, inst=0x000, len=152)
+    F004 Container 详细（递归解析内部 record）:
+      内部子 record 数量: 3
+      [0] offset=0x18855 ver=0x2 inst=0x04B type=0xF00A (ClientAnchor) len=8
+        ClientAnchor: ver=2 len=8 values=[3075, 0, 2560, 0]
+      [1] offset=0x18865 ver=0x3 inst=0x00E type=0xF00B (ClientData) len=112
+        raw hex: 7f008000fb01bf000400040004410200000005c10400000007010065b3003f010000060081013366ff0082014d4d0000bf0110001000ff01000018003f031000
+      [2] offset=0x188DD ver=0x0 inst=0x000 type=0xF010 (FSPGR) len=8
+        raw hex: 4900440073052802
+
+  [3] SpContainer(F004变体) (offset=0x188ED, ver=0xF, inst=0x000, len=2445)
+    F004 Container 详细（递归解析内部 record）:
+      内部子 record 数量: 6
+      [0] offset=0x188F5 ver=0x2 inst=0x0CA type=0xF00A (ClientAnchor) len=8
+        ClientAnchor: ver=2 len=8 values=[3076, 0, 2560, 0]
+      [1] offset=0x18905 ver=0x3 inst=0x011 type=0xF00B (ClientData) len=124
+        raw hex: 7f000000ef018000e0c1b210bf0006000600bf0100001000cb019c310000d20100000000d30100000000d40100000000d50100000000d70101000000ff010000
+      [2] offset=0x18989 ver=0x3 inst=0x001 type=0xF122 (UnknownF122) len=2041
+        raw hex: a9c3f3070000504b0304140006000800000021005ae31166fe000000e2010000130000005b436f6e74656e745f54797065735d2e786d6c94914d4fc4201086ef
+      [3] offset=0x1918A ver=0x0 inst=0x000 type=0xF010 (FSPGR) len=8
+        raw hex: d10e7a092316b80f
+      [4] offset=0x1919A ver=0xF inst=0x000 type=0xF011 (FConnector) len=66
+        raw hex: 0f0088133a0000000f008a13320000000000ba0f0e0000005f005f005f00500050005400390000008b13140000000000ac0f0c00000000000000000000000000
+      [5] offset=0x191E4 ver=0xF inst=0x000 type=0xF00D (ClientTextbox(container)) len=150
+        ClientTextbox 子 record 数: 5
+          TextHeaderAtom (len=4)
+            txType: 4
+          TextCharsAtom (len=48)
+            文本: '立 志    立 德    立 功    立 言'
+          StyleAtom/TextRulerAtom (len=32)
+          Unknown(0x0FAA) (len=14)
+          Unknown(0x0FA6) (len=12)
+
+  [4] SpContainer(F004变体) (offset=0x19282, ver=0xF, inst=0x000, len=2493)
+    F004 Container 详细（递归解析内部 record）:
+      内部子 record 数量: 6
+      [0] offset=0x1928A ver=0x2 inst=0x001 type=0xF00A (ClientAnchor) len=8
+        ClientAnchor: ver=2 len=8 values=[3077, 0, 2560, 0]
+      [1] offset=0x1929A ver=0x3 inst=0x012 type=0xF00B (ClientData) len=132
+        raw hex: 7f000000ef01800000c3b210850002000000bf0006000600bf0100001000cb019c310000d20100000000d30100000000d40100000000d50100000000d7010100
+      [2] offset=0x19326 ver=0x3 inst=0x001 type=0xF122 (UnknownF122) len=2061
+        raw hex: a9c307080000504b0304140006000800000021005ae31166fe000000e2010000130000005b436f6e74656e745f54797065735d2e786d6c94914d4fc4201086ef
+      [3] offset=0x19B3B ver=0x0 inst=0x000 type=0xF010 (FSPGR) len=8
+        raw hex: bc0f200954166910
+      [4] offset=0x19B4B ver=0xF inst=0x000 type=0xF011 (FConnector) len=66
+        raw hex: 0f0088133a0000000f008a13320000000000ba0f0e0000005f005f005f00500050005400390000008b13140000000000ac0f0c00000000000000000000000000
+      [5] offset=0x19B95 ver=0xF inst=0x000 type=0xF00D (ClientTextbox(container)) len=170
+        ClientTextbox 子 record 数: 5
+          TextHeaderAtom (len=4)
+            txType: 4
+          TextBytesAtom (len=68)
+            文本: 'Possess Lofty Ideals  Noble Characters Glorious Feats Immortal Works'
+          StyleAtom/TextRulerAtom (len=32)
+          Unknown(0x0FAA) (len=14)
+          Unknown(0x0FA6) (len=12)
+
+  [5] SpContainer(F004变体) (offset=0x19C47, ver=0xF, inst=0x000, len=430)
+    F004 Container 详细（递归解析内部 record）:
+      内部子 record 数量: 4
+      [0] offset=0x19C4F ver=0x2 inst=0x0CA type=0xF00A (ClientAnchor) len=8
+        ClientAnchor: ver=2 len=8 values=[3078, 0, 2560, 0]
+      [1] offset=0x19C5F ver=0x3 inst=0x00E type=0xF00B (ClientData) len=106
+        raw hex: 7f000000ef01800020c4b210bf0006000600bf0100001100cb019c310000d20100000000d30100000000d40100000000d50100000000d70101000000ff010000
+      [2] offset=0x19CD1 ver=0x0 inst=0x000 type=0xF010 (FSPGR) len=8
+        raw hex: 0507bf02ff14300c
+      [3] offset=0x19CE1 ver=0xF inst=0x000 type=0xF00D (ClientTextbox(container)) len=276
+        ClientTextbox 子 record 数: 5
+          TextHeaderAtom (len=4)
+            txType: 4
+          TextCharsAtom (len=142)
+            文本: '       人们消费行为决策具有：\r                     非理性、直觉性、情绪性和情境性\r     钱和钱有不一样的效用'
+          StyleAtom/TextRulerAtom (len=50)
+          Unknown(0x0FAA) (len=28)
+          Unknown(0x0FA6) (len=12)
+
+################################################################################
+# 文件标签: 水印文件
+# 文件路径: d:\xwtwork\xdemo\realtime-screen-ocr-rust\pptx-rs\_test_out\wm_心理账户理论.ppt
+################################################################################
+PowerPoint Document stream 大小: 334575 字节
+找到 47 个 Slide (recType=0x03EE)
+
+======================================================================
+--- Slide 1 (offset=0x1868D) ---
+======================================================================
+Slide header: ver=0xF inst=0x000 type=0x03EE len=6311
+PPDrawing offset: 0x186CD (ver=0xF inst=0x000 type=0x040C len=6042)
+SpgrContainer offset: 0x186D5 (ver=0xF inst=0x000 type=0xF002 len=6034)
+SpContainer 数量: 2
+
+  ======================================================================
+  SpContainer 1/2 (offset=0x186ED)
+  ======================================================================
+  SpContainer (offset=0x186ED, ver=0xF, inst=0x000, type=0xF003, len=5896)
+  总长度（含 header）: 5904 字节
+  子 record 数量: 6
+  子 record 顺序:
+    [0] offset=0x186F5 ver=0xF inst=0x000 type=0xF004 (SpContainer(F004变体)) len=40
+    [1] offset=0x18725 ver=0xF inst=0x000 type=0xF004 (SpContainer(F004变体)) len=288
+    [2] offset=0x1884D ver=0xF inst=0x000 type=0xF004 (SpContainer(F004变体)) len=152
+    [3] offset=0x188ED ver=0xF inst=0x000 type=0xF004 (SpContainer(F004变体)) len=2445
+    [4] offset=0x19282 ver=0xF inst=0x000 type=0xF004 (SpContainer(F004变体)) len=2493
+    [5] offset=0x19C47 ver=0xF inst=0x000 type=0xF004 (SpContainer(F004变体)) len=430
+
+  --- 各子 record 详细解析 ---
+
+  [0] SpContainer(F004变体) (offset=0x186F5, ver=0xF, inst=0x000, len=40)
+    F004 Container 详细（递归解析内部 record）:
+      内部子 record 数量: 2
+      [0] offset=0x186FD ver=0x1 inst=0x000 type=0xF009 (FSPGR) len=16
+        FSPGR: left=0 top=0 right=0 bottom=0
+      [1] offset=0x18715 ver=0x2 inst=0x000 type=0xF00A (ClientAnchor) len=8
+        ClientAnchor: ver=2 len=8 values=[3072, 0, 5, 0]
+
+  [1] SpContainer(F004变体) (offset=0x18725, ver=0xF, inst=0x000, len=288)
+    F004 Container 详细（递归解析内部 record）:
+      内部子 record 数量: 5
+      [0] offset=0x1872D ver=0x2 inst=0x001 type=0xF00A (ClientAnchor) len=8
+        ClientAnchor: ver=2 len=8 values=[3074, 0, 544, 0]
+      [1] offset=0x1873D ver=0x3 inst=0x010 type=0xF00B (ClientData) len=120
+        raw hex: 0400000000007f000100ef01800000c0b210810030650100820098b20000830030650100840098b20000850000000000870002000000880000000000bf000400
+      [2] offset=0x187BD ver=0x0 inst=0x000 type=0xF010 (FSPGR) len=8
+        raw hex: 8701af01cf14e704
+      [3] offset=0x187CD ver=0xF inst=0x000 type=0xF011 (FConnector) len=28
+        raw hex: 0000c30b08000000ffffffff0f00cf0000001f040400000002140000
+      [4] offset=0x187F1 ver=0xF inst=0x000 type=0xF00D (ClientTextbox(container)) len=84
+        ClientTextbox 子 record 数: 4
+          TextHeaderAtom (len=4)
+            txType: 6
+          TextCharsAtom (len=8)
+            文本: '心理账户'
+          StyleAtom/TextRulerAtom (len=26)
+          Unknown(0x0FAA) (len=14)
+
+  [2] SpContainer(F004变体) (offset=0x1884D, ver=0xF, inst=0x000, len=152)
+    F004 Container 详细（递归解析内部 record）:
+      内部子 record 数量: 3
+      [0] offset=0x18855 ver=0x2 inst=0x04B type=0xF00A (ClientAnchor) len=8
+        ClientAnchor: ver=2 len=8 values=[3075, 0, 2560, 0]
+      [1] offset=0x18865 ver=0x3 inst=0x00E type=0xF00B (ClientData) len=112
+        raw hex: 7f008000fb01bf000400040004410200000005c10400000007010065b3003f010000060081013366ff0082014d4d0000bf0110001000ff01000018003f031000
+      [2] offset=0x188DD ver=0x0 inst=0x000 type=0xF010 (FSPGR) len=8
+        raw hex: 4900440073052802
+
+  [3] SpContainer(F004变体) (offset=0x188ED, ver=0xF, inst=0x000, len=2445)
+    F004 Container 详细（递归解析内部 record）:
+      内部子 record 数量: 6
+      [0] offset=0x188F5 ver=0x2 inst=0x0CA type=0xF00A (ClientAnchor) len=8
+        ClientAnchor: ver=2 len=8 values=[3076, 0, 2560, 0]
+      [1] offset=0x18905 ver=0x3 inst=0x011 type=0xF00B (ClientData) len=124
+        raw hex: 7f000000ef018000e0c1b210bf0006000600bf0100001000cb019c310000d20100000000d30100000000d40100000000d50100000000d70101000000ff010000
+      [2] offset=0x18989 ver=0x3 inst=0x001 type=0xF122 (UnknownF122) len=2041
+        raw hex: a9c3f3070000504b0304140006000800000021005ae31166fe000000e2010000130000005b436f6e74656e745f54797065735d2e786d6c94914d4fc4201086ef
+      [3] offset=0x1918A ver=0x0 inst=0x000 type=0xF010 (FSPGR) len=8
+        raw hex: d10e7a092316b80f
+      [4] offset=0x1919A ver=0xF inst=0x000 type=0xF011 (FConnector) len=66
+        raw hex: 0f0088133a0000000f008a13320000000000ba0f0e0000005f005f005f00500050005400390000008b13140000000000ac0f0c00000000000000000000000000
+      [5] offset=0x191E4 ver=0xF inst=0x000 type=0xF00D (ClientTextbox(container)) len=150
+        ClientTextbox 子 record 数: 5
+          TextHeaderAtom (len=4)
+            txType: 4
+          TextCharsAtom (len=48)
+            文本: '立 志    立 德    立 功    立 言'
+          StyleAtom/TextRulerAtom (len=32)
+          Unknown(0x0FAA) (len=14)
+          Unknown(0x0FA6) (len=12)
+
+  [4] SpContainer(F004变体) (offset=0x19282, ver=0xF, inst=0x000, len=2493)
+    F004 Container 详细（递归解析内部 record）:
+      内部子 record 数量: 6
+      [0] offset=0x1928A ver=0x2 inst=0x001 type=0xF00A (ClientAnchor) len=8
+        ClientAnchor: ver=2 len=8 values=[3077, 0, 2560, 0]
+      [1] offset=0x1929A ver=0x3 inst=0x012 type=0xF00B (ClientData) len=132
+        raw hex: 7f000000ef01800000c3b210850002000000bf0006000600bf0100001000cb019c310000d20100000000d30100000000d40100000000d50100000000d7010100
+      [2] offset=0x19326 ver=0x3 inst=0x001 type=0xF122 (UnknownF122) len=2061
+        raw hex: a9c307080000504b0304140006000800000021005ae31166fe000000e2010000130000005b436f6e74656e745f54797065735d2e786d6c94914d4fc4201086ef
+      [3] offset=0x19B3B ver=0x0 inst=0x000 type=0xF010 (FSPGR) len=8
+        raw hex: bc0f200954166910
+      [4] offset=0x19B4B ver=0xF inst=0x000 type=0xF011 (FConnector) len=66
+        raw hex: 0f0088133a0000000f008a13320000000000ba0f0e0000005f005f005f00500050005400390000008b13140000000000ac0f0c00000000000000000000000000
+      [5] offset=0x19B95 ver=0xF inst=0x000 type=0xF00D (ClientTextbox(container)) len=170
+        ClientTextbox 子 record 数: 5
+          TextHeaderAtom (len=4)
+            txType: 4
+          TextBytesAtom (len=68)
+            文本: 'Possess Lofty Ideals  Noble Characters Glorious Feats Immortal Works'
+          StyleAtom/TextRulerAtom (len=32)
+          Unknown(0x0FAA) (len=14)
+          Unknown(0x0FA6) (len=12)
+
+  [5] SpContainer(F004变体) (offset=0x19C47, ver=0xF, inst=0x000, len=430)
+    F004 Container 详细（递归解析内部 record）:
+      内部子 record 数量: 4
+      [0] offset=0x19C4F ver=0x2 inst=0x0CA type=0xF00A (ClientAnchor) len=8
+        ClientAnchor: ver=2 len=8 values=[3078, 0, 2560, 0]
+      [1] offset=0x19C5F ver=0x3 inst=0x00E type=0xF00B (ClientData) len=106
+        raw hex: 7f000000ef01800020c4b210bf0006000600bf0100001100cb019c310000d20100000000d30100000000d40100000000d50100000000d70101000000ff010000
+      [2] offset=0x19CD1 ver=0x0 inst=0x000 type=0xF010 (FSPGR) len=8
+        raw hex: 0507bf02ff14300c
+      [3] offset=0x19CE1 ver=0xF inst=0x000 type=0xF00D (ClientTextbox(container)) len=276
+        ClientTextbox 子 record 数: 5
+          TextHeaderAtom (len=4)
+            txType: 4
+          TextCharsAtom (len=142)
+            文本: '       人们消费行为决策具有：\r                     非理性、直觉性、情绪性和情境性\r     钱和钱有不一样的效用'
+          StyleAtom/TextRulerAtom (len=50)
+          Unknown(0x0FAA) (len=28)
+          Unknown(0x0FA6) (len=12)
+
+  ======================================================================
+  SpContainer 2/2 (offset=0x19DFD)
+  ======================================================================
+  SpContainer (offset=0x19DFD, ver=0xF, inst=0x000, type=0xF003, len=106)
+  总长度（含 header）: 114 字节
+  子 record 数量: 4
+  子 record 顺序:
+    [0] offset=0x19E05 ver=0x2 inst=0x04B type=0xF007 (FSP) len=8
+    [1] offset=0x19E15 ver=0x3 inst=0x003 type=0xF008 (FOPT) len=18
+    [2] offset=0x19E2F ver=0x2 inst=0x000 type=0xF00A (ClientAnchor) len=8
+    [3] offset=0x19E3F ver=0xF inst=0x000 type=0xF00D (ClientTextbox(container)) len=40
+
+  --- 各子 record 详细解析 ---
+
+  [0] FSP (offset=0x19E05, ver=0x2, inst=0x04B, len=8)
+    FSP 详细:
+      ver: 0x2 (期望 0x2)
+      inst (形状类型): 0x4B (75) -> TextBox
+      shapeId: 4142 (0x0000102E)
+      flags: 0x00000200
+      flags 位解析: bit9:fHaveAnchor
+
+  [1] FOPT (offset=0x19E15, ver=0x3, inst=0x003, len=18)
+    FOPT 详细 (属性数: 3):
+      propId=0x0186 (fillType): op=0x00000000
+      propId=0x01BF (fNoFillHitTest): op=0x00010011
+      propId=0x01FF (fNoLineDrawDash): op=0x00010009
+
+  [2] ClientAnchor (offset=0x19E2F, ver=0x2, inst=0x000, len=8)
+    ClientAnchor 详细:
+      ver: 2 (期望 2)
+      inst: 0
+      len: 8 字节
+      raw hex: d007d0076842e02e
+      values (int16): [2000, 2000, 17000, 12000]
+      解析:
+        top:    2000 (0x07D0)
+        left:   2000 (0x07D0)
+        right:  17000 (0x4268)
+        bottom: 12000 (0x2EE0)
+      (单位: 1/635 cm = EMU/635)
+
+  [3] ClientTextbox(container) (offset=0x19E3F, ver=0xF, inst=0x000, len=40)
+    ClientTextbox 详细 (子 record 数: 2):
+      [106055] ver=0x0 inst=0x000 type=0x0F9F (TextHeaderAtom) len=4
+        txType: 4 (0x00000004)
+      [106067] ver=0x0 inst=0x000 type=0x0FA0 (TextCharsAtom) len=20
+        文本: 'pptx-rs 水印'
+
+
+################################################################################
+# 结构对比分析
+################################################################################
+
+原始文件 Slide 1: 1 个 SpContainer
+水印文件 Slide 1: 2 个 SpContainer
+
+水印文件比原始文件多 1 个 SpContainer（应为水印）
+
+======================================================================
+--- 原始文件 SpContainer 结构概览 ---
+======================================================================
+SpContainer #1 (offset=0x186ED)
+顶层子 record 顺序: [('SpContainer(F004变体)', 'inst=0x000'), ('SpContainer(F004变体)', 'inst=0x000'), ('SpContainer(F004变体)', 'inst=0x000'), ('SpContainer(F004变体)', 'inst=0x000'), ('SpContainer(F004变体)', 'inst=0x000'), ('SpContainer(F004变体)', 'inst=0x000')]
+
+原始文件 SpContainer 内部包含 6 个 0xF004 container
+这是 PowerPoint 97-2003 的组形状结构，每个 0xF004 是一个子形状
+
+  [0xF004 #1] (offset=0x186F5)
+    内部 record 顺序: [('FSPGR', 'inst=0x000'), ('ClientAnchor', 'inst=0x000')]
+    FSP: 无（原始文件 0xF004 内部不使用 FSP）
+    ClientAnchor: ver=2 len=8 values=[3072, 0, 5, 0]
+
+  [0xF004 #2] (offset=0x18725)
+    内部 record 顺序: [('ClientAnchor', 'inst=0x001'), ('ClientData', 'inst=0x010'), ('FSPGR', 'inst=0x000'), ('FConnector', 'inst=0x000'), ('ClientTextbox(container)', 'inst=0x000')]
+    FSP: 无（原始文件 0xF004 内部不使用 FSP）
+    ClientAnchor: ver=2 len=8 values=[3074, 0, 544, 0]
+    ClientTextbox 子 record:
+      TextHeaderAtom (len=4)
+        txType: 6
+      TextCharsAtom (len=8)
+        文本: '心理账户'
+      StyleAtom/TextRulerAtom (len=26)
+      Unknown(0x0FAA) (len=14)
+    ClientData: len=120
+    FConnector raw: 0000c30b08000000ffffffff0f00cf0000001f040400000002140000
+
+  [0xF004 #3] (offset=0x1884D)
+    内部 record 顺序: [('ClientAnchor', 'inst=0x04B'), ('ClientData', 'inst=0x00E'), ('FSPGR', 'inst=0x000')]
+    FSP: 无（原始文件 0xF004 内部不使用 FSP）
+    ClientAnchor: ver=2 len=8 values=[3075, 0, 2560, 0]
+    ClientData: len=112
+
+  [0xF004 #4] (offset=0x188ED)
+    内部 record 顺序: [('ClientAnchor', 'inst=0x0CA'), ('ClientData', 'inst=0x011'), ('UnknownF122', 'inst=0x001'), ('FSPGR', 'inst=0x000'), ('FConnector', 'inst=0x000'), ('ClientTextbox(container)', 'inst=0x000')]
+    FSP: 无（原始文件 0xF004 内部不使用 FSP）
+    ClientAnchor: ver=2 len=8 values=[3076, 0, 2560, 0]
+    ClientTextbox 子 record:
+      TextHeaderAtom (len=4)
+        txType: 4
+      TextCharsAtom (len=48)
+        文本: '立 志    立 德    立 功    立 言'
+      StyleAtom/TextRulerAtom (len=32)
+      Unknown(0x0FAA) (len=14)
+      Unknown(0x0FA6) (len=12)
+    ClientData: len=124
+    FConnector raw: 0f0088133a0000000f008a13320000000000ba0f0e0000005f005f005f00500050005400390000008b13140000000000ac0f0c00000000000000000000000000
+
+  [0xF004 #5] (offset=0x19282)
+    内部 record 顺序: [('ClientAnchor', 'inst=0x001'), ('ClientData', 'inst=0x012'), ('UnknownF122', 'inst=0x001'), ('FSPGR', 'inst=0x000'), ('FConnector', 'inst=0x000'), ('ClientTextbox(container)', 'inst=0x000')]
+    FSP: 无（原始文件 0xF004 内部不使用 FSP）
+    ClientAnchor: ver=2 len=8 values=[3077, 0, 2560, 0]
+    ClientTextbox 子 record:
+      TextHeaderAtom (len=4)
+        txType: 4
+      TextBytesAtom (len=68)
+        文本: 'Possess Lofty Ideals  Noble Characters Glorious Feats Immortal Works'
+      StyleAtom/TextRulerAtom (len=32)
+      Unknown(0x0FAA) (len=14)
+      Unknown(0x0FA6) (len=12)
+    ClientData: len=132
+    FConnector raw: 0f0088133a0000000f008a13320000000000ba0f0e0000005f005f005f00500050005400390000008b13140000000000ac0f0c00000000000000000000000000
+
+  [0xF004 #6] (offset=0x19C47)
+    内部 record 顺序: [('ClientAnchor', 'inst=0x0CA'), ('ClientData', 'inst=0x00E'), ('FSPGR', 'inst=0x000'), ('ClientTextbox(container)', 'inst=0x000')]
+    FSP: 无（原始文件 0xF004 内部不使用 FSP）
+    ClientAnchor: ver=2 len=8 values=[3078, 0, 2560, 0]
+    ClientTextbox 子 record:
+      TextHeaderAtom (len=4)
+        txType: 4
+      TextCharsAtom (len=142)
+        文本: '       人们消费行为决策具有：\r                     非理性、直觉性、情绪性和情境性\r     钱和钱有不一样的效用'
+      StyleAtom/TextRulerAtom (len=50)
+      Unknown(0x0FAA) (len=28)
+      Unknown(0x0FA6) (len=12)
+    ClientData: len=106
+
+======================================================================
+--- 水印文件最后一个 SpContainer（注入的水印）---
+======================================================================
+SpContainer #2 (offset=0x19DFD)
+顶层子 record 顺序: [('FSP', 'inst=0x04B'), ('FOPT', 'inst=0x003'), ('ClientAnchor', 'inst=0x000'), ('ClientTextbox(container)', 'inst=0x000')]
+FSP: inst=0x4B (TextBox) shapeId=4142 flags=0x00000200
+FOPT 属性:
+  0x0186 (fillType): 0x00000000
+  0x01BF (fNoFillHitTest): 0x00010011
+  0x01FF (fNoLineDrawDash): 0x00010009
+ClientAnchor: ver=2 len=8 values=[2000, 2000, 17000, 12000]
+ClientTextbox 子 record:
+  TextHeaderAtom (len=4)
+    txType: 4
+  TextCharsAtom (len=20)
+    文本: 'pptx-rs 水印'
+
+======================================================================
+--- 关键差异点分析 ---
+======================================================================
+
+[1] Container 类型差异:
+    原始文件: SpContainer(0xF003) 内部用 0xF004 container 表示子形状
+    水印文件: SpContainer(0xF003) 直接包含 FSP/FOPT/ClientAnchor/ClientTextbox
+    说明: 0xF004 是 PowerPoint 97-2003 的组形状子容器，
+          而水印直接用标准 SpContainer 结构（符合 MS-ODRAW 规范）
+
+[2] FSP (0xF007) 差异:
+    原始文本框: 无 FSP (0xF004 内部不使用 FSP，用 FConnector 0xF011 代替)
+    水印:       有 FSP, inst=0x4B (TextBox) shapeId=4142 flags=0x00000200
+    说明: 原始文件用 FConnector(0xF011) 表示形状属性，水印用标准 FSP(0xF007)
+
+[3] FOPT (0xF008) 差异:
+    原始文本框: 无 FOPT (0xF004 内部不使用 FOPT)
+    水印:       有 FOPT, 属性数=3
+      0x0186 (fillType): 0x00000000
+      0x01BF (fNoFillHitTest): 0x00010011
+      0x01FF (fNoLineDrawDash): 0x00010009
+    说明: 原始文件不用 FOPT 设置填充/线条，水印用 FOPT 设置无填充无边框
+
+[4] ClientAnchor (0xF00A) 差异:
+    原始文本框: ver=2 inst=1 len=8 values=[3074, 0, 544, 0]
+    水印:       ver=2 inst=0 len=8 values=[2000, 2000, 17000, 12000]
+    说明: ClientAnchor 格式相同（ver=2, len=8, 4个int16），但坐标值不同
+
+[5] ClientTextbox (0xF00D) 子 record 差异:
+    原始文本框: ['TextHeaderAtom', 'TextCharsAtom', 'StyleAtom/TextRulerAtom', 'Unknown(0x0FAA)']
+      txType: 6
+      文本: '心理账户'
+    水印:       ['TextHeaderAtom', 'TextCharsAtom']
+      txType: 4
+      文本: 'pptx-rs 水印'
+    说明: 原始文本框包含 StyleAtom/TextRulerAtom 等样式 record，
+          水印仅包含 TextHeaderAtom + TextCharsAtom（缺少样式）
+
+[6] ClientData (0xF00B) 差异:
+    原始文本框: 有 ClientData, len=120
+      raw hex: 0400000000007f000100ef01800000c0b210810030650100820098b20000830030650100840098b20000850000000000870002000000880000000000bf000400
+    水印:       无 ClientData
+    说明: ClientData 包含形状的额外属性（如占位符类型、形状几何等），
+          水印缺少 ClientData 可能导致 PowerPoint 无法正确渲染形状
+
+[7] FConnector (0xF011) vs FSP (0xF007) 差异:
+    原始文本框: 有 FConnector, raw=0000c30b08000000ffffffff0f00cf0000001f040400000002140000
+    水印:       无 FConnector，用 FSP 代替
+    说明: FConnector 和 FSP 都包含 shapeId/flags，但 type code 不同
+
+======================================================================
+--- 总结：水印不显示的可能原因 ---
+======================================================================
+1. 结构差异: 原始文件用 0xF004+FConnector 结构，水印用标准 FSP+FOPT 结构
+   - 水印结构符合 MS-ODRAW 规范，但可能与 PowerPoint 97-2003 兼容性不佳
+2. 缺少 ClientData (0xF00B): 原始形状都有 ClientData，水印没有
+   - ClientData 包含形状几何、占位符等关键信息
+3. 缺少样式 record: 原始文本框有 StyleAtom/TextRulerAtom，水印没有
+   - 可能导致文本无法正确渲染
+4. FOPT 属性: 水印设置了 fillType=0(无填充) 和 fNoFillHitTest/fNoLineDrawDash
+   - 这些属性可能影响形状可见性
+5. ClientAnchor 坐标: 水印用 [2000,2000,17000,12000]，需确认是否在 slide 范围内
+6. TextHeaderAtom txType: 水印用 txType=4，原始文件也用 4（一致）
+
+################################################################################
+# 分析完成
+################################################################################

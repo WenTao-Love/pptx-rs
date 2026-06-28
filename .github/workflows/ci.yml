@@ -1,0 +1,83 @@
+name: ci
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+env:
+  CARGO_TERM_COLOR: always
+  RUST_BACKTRACE: 1
+
+jobs:
+  # 基础检查：格式 + clippy + 文档
+  lint:
+    name: fmt + clippy + doc
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - uses: Swatinem/rust-cache@v2
+      # 格式检查（允许通过 cargo fmt 修复）
+      - name: cargo fmt --check
+        run: cargo fmt --all -- --check
+      # clippy 检查（拒绝任何警告）
+      - name: cargo clippy
+        run: cargo clippy --all-targets -- -D warnings
+      # 文档生成检查（无 warning）
+      - name: cargo doc
+        run: cargo doc --no-deps
+
+  # 跨平台测试矩阵
+  test:
+    name: test (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      # 单元测试 + 集成测试
+      - name: cargo test
+        run: cargo test --all
+      # 验证基准测试可编译（不实际运行，仅检查编译正确性）
+      - name: cargo build --benches
+        run: cargo build --benches
+      # 验证 examples 可编译
+      - name: cargo build --examples
+        run: cargo build --examples
+
+  # 端到端验证：运行 hello_pptx 示例并上传产物
+  e2e:
+    name: end-to-end (hello_pptx)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: run hello_pptx example
+        run: cargo run --example hello_pptx
+      - name: upload hello.pptx artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: hello-pptx-${{ github.sha }}
+          path: hello.pptx
+          if-no-files-found: warn
+
+  # crates.io 发布就绪检查（仅 main 分支）
+  publish-dry-run:
+    name: cargo publish --dry-run
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: cargo publish --dry-run
+        run: cargo publish --dry-run

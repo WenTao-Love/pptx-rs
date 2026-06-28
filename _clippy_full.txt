@@ -1,0 +1,1024 @@
+    Checking pptx-rs v0.2.0 (/mnt/d/xwtwork/xdemo/realtime-screen-ocr-rust/pptx-rs)
+error: method `from_str` can be confused for the standard trait method `std::str::FromStr::from_str`
+   --> src/oxml/chart.rs:138:5
+    |
+138 | /     pub fn from_str(s: &str) -> Option<Self> {
+139 | |         match s {
+140 | |             "bestFit" => Some(LabelPosition::BestFit),
+141 | |             "t" => Some(LabelPosition::Above),
+...   |
+151 | |     }
+    | |_____^
+    |
+    = help: consider implementing the trait `std::str::FromStr` or choosing a less ambiguous method name
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#should_implement_trait
+    = note: `-D clippy::should-implement-trait` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::should_implement_trait)]`
+
+error: this `impl` can be derived
+   --> src/oxml/chart.rs:154:1
+    |
+154 | / impl Default for LabelPosition {
+155 | |     fn default() -> Self {
+156 | |         LabelPosition::BestFit
+157 | |     }
+158 | | }
+    | |_^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#derivable_impls
+    = note: `-D clippy::derivable-impls` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::derivable_impls)]`
+help: replace the manual implementation with a derive attribute and mark the default variant
+    |
+ 91 + #[derive(Default)]
+ 92 | pub enum LabelPosition {
+ 93 |     /// 最佳位置（由 PowerPoint 自动选择）。适用于大多数图表类型。
+ 94 ~     #[default]
+ 95 ~     BestFit,
+    |
+
+error: useless use of `format!`
+   --> src/oxml/chart.rs:594:32
+    |
+594 |                 w.leaf("c:f", &format!("Sheet1!$A$2:$A$100"));
+    |                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: consider using `.to_string()`: `"Sheet1!$A$2:$A$100".to_string()`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#useless_format
+    = note: `-D clippy::useless-format` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::useless_format)]`
+
+error: called `unwrap` on `dl_target` after checking its variant with `is_some`
+    --> src/oxml/chart.rs:1149:34
+     |
+1148 |                 if dl_target.is_some() {
+     |                 ---------------------- help: try: `if let Some(<item>) = dl_target`
+1149 |                     let target = dl_target.unwrap();
+     |                                  ^^^^^^^^^^^^^^^^^^
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#unnecessary_unwrap
+     = note: `-D clippy::unnecessary-unwrap` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[allow(clippy::unnecessary_unwrap)]`
+
+error: deref which would be done by auto-deref
+    --> src/oxml/chart.rs:1210:56
+     |
+1210 | ...   let text_str = std::str::from_utf8(&*t).unwrap_or("");
+     |                                          ^^^ help: try: `&t`
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#explicit_auto_deref
+     = note: `-D clippy::explicit-auto-deref` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[allow(clippy::explicit_auto_deref)]`
+
+error: deref which would be done by auto-deref
+    --> src/oxml/chart.rs:1220:56
+     |
+1220 | ...   let text_str = std::str::from_utf8(&*t).unwrap_or("");
+     |                                          ^^^ help: try: `&t`
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#explicit_auto_deref
+
+error: deref which would be done by auto-deref
+   --> src/oxml/diagram.rs:376:60
+    |
+376 | ...   let text_str = std::str::from_utf8(&*t).unwrap_or("");
+    |                                          ^^^ help: try: `&t`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#explicit_auto_deref
+
+error: deref which would be done by auto-deref
+   --> src/oxml/diagram.rs:386:65
+    |
+386 | ...   cur_pt_raw.push_str(std::str::from_utf8(&*t).unwrap_or(""));
+    |                                               ^^^ help: try: `&t`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#explicit_auto_deref
+
+error: deref which would be done by auto-deref
+   --> src/oxml/diagram.rs:388:66
+    |
+388 | ...   cur_cxn_raw.push_str(std::str::from_utf8(&*t).unwrap_or(""));
+    |                                                ^^^ help: try: `&t`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#explicit_auto_deref
+
+error: deref which would be done by auto-deref
+   --> src/oxml/diagram.rs:787:69
+    |
+787 | ...str(std::str::from_utf8(&*t).unwrap_or(""));
+    |                            ^^^ help: try: `&t`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#explicit_auto_deref
+
+error: deref which would be done by auto-deref
+    --> src/oxml/diagram.rs:1184:62
+     |
+1184 | ...   cur_raw.push_str(std::str::from_utf8(&*t).unwrap_or(""));
+     |                                            ^^^ help: try: `&t`
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#explicit_auto_deref
+
+error: this `if` can be collapsed into the outer `match`
+    --> src/oxml/parse_sld.rs:1244:25
+     |
+1244 | /                         if local == b"custGeom" {
+1245 | |                             return Ok(geom);
+1246 | |                         }
+     | |_________________________^
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#collapsible_match
+     = note: `-D clippy::collapsible-match` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[allow(clippy::collapsible_match)]`
+help: collapse nested if block
+     |
+1243 ~                     0
+1244 ~                         if local == b"custGeom" => {
+1245 |                             return Ok(geom);
+1246 ~                         }
+     |
+
+error: this `if` can be collapsed into the outer `match`
+    --> src/oxml/parse_sld.rs:5212:33
+     |
+5212 | / ...                   if v == "1" {
+5213 | | ...                       cell.v_merge = true;
+5214 | | ...                   }
+     | |_______________________^
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#collapsible_match
+help: collapse nested if block
+     |
+5211 ~                             b"vMerge"
+5212 ~                                 if v == "1" => {
+5213 |                                     cell.v_merge = true;
+5214 ~                                 }
+     |
+
+error: this `if` has identical blocks
+    --> src/oxml/parse_sld.rs:6038:53
+     |
+6038 |                   if state == 2 && local == b"spTree" {
+     |  _____________________________________________________^
+6039 | |                     state = 1;
+6040 | |                 } else if state == 3 && local == b"sldLayoutIdLst" {
+     | |_________________^
+     |
+note: same as this
+    --> src/oxml/parse_sld.rs:6040:68
+     |
+6040 |                   } else if state == 3 && local == b"sldLayoutIdLst" {
+     |  ____________________________________________________________________^
+6041 | |                     state = 1;
+6042 | |                 } else if state == 1 && local == b"sldMaster" {
+     | |_________________^
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#if_same_then_else
+     = note: `-D clippy::if-same-then-else` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[allow(clippy::if_same_then_else)]`
+
+error: calls to `push` immediately after creation
+  --> src/oxml/section.rs:84:9
+   |
+84 | /         let mut attrs: Vec<(&str, &str)> = Vec::with_capacity(1);
+85 | |         attrs.push(("name", self.name.as_str()));
+   | |_________________________________________________^ help: consider using the `vec![]` macro: `let attrs: Vec<(&str, &str)> = vec![..];`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#vec_init_then_push
+   = note: `-D clippy::vec-init-then-push` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::vec_init_then_push)]`
+
+error: this `impl` can be derived
+   --> src/oxml/section.rs:99:1
+    |
+ 99 | / impl Default for Section {
+100 | |     fn default() -> Self {
+101 | |         Self {
+102 | |             name: String::new(),
+...   |
+106 | | }
+    | |_^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#derivable_impls
+help: replace the manual implementation with a derive attribute
+    |
+ 55 + #[derive(Default)]
+ 56 | pub struct Section {
+    |
+
+error: method `from_str` can be confused for the standard trait method `std::str::FromStr::from_str`
+   --> src/oxml/simpletypes.rs:881:5
+    |
+881 | /     pub fn from_str(s: &str) -> Self {
+882 | |         match s {
+883 | |             "title" => PpPlaceholderType::Title,
+884 | |             "body" => PpPlaceholderType::Body,
+...   |
+900 | |     }
+    | |_____^
+    |
+    = help: consider implementing the trait `std::str::FromStr` or choosing a less ambiguous method name
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#should_implement_trait
+
+error: this `impl` can be derived
+   --> src/oxml/sppr.rs:377:1
+    |
+377 | / impl Default for ArrowType {
+378 | |     fn default() -> Self {
+379 | |         ArrowType::None
+380 | |     }
+381 | | }
+    | |_^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#derivable_impls
+help: replace the manual implementation with a derive attribute and mark the default variant
+    |
+362 + #[derive(Default)]
+363 | pub enum ArrowType {
+364 |     /// 无箭头（`type="none"`）。
+365 ~     #[default]
+366 ~     None,
+    |
+
+error: this `impl` can be derived
+   --> src/oxml/sppr.rs:410:1
+    |
+410 | / impl Default for ArrowSize {
+411 | |     fn default() -> Self {
+412 | |         ArrowSize::Medium
+413 | |     }
+414 | | }
+    | |_^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#derivable_impls
+help: replace the manual implementation with a derive attribute and mark the default variant
+    |
+401 + #[derive(Default)]
+402 | pub enum ArrowSize {
+403 |     /// 小（`"sm"`）。
+404 |     Small,
+405 |     /// 中等（`"med"`，默认）。
+406 ~     #[default]
+407 ~     Medium,
+    |
+
+error: this `impl` can be derived
+   --> src/oxml/sppr.rs:451:1
+    |
+451 | / impl Default for LineJoin {
+452 | |     fn default() -> Self {
+453 | |         LineJoin::Round
+454 | |     }
+455 | | }
+    | |_^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#derivable_impls
+help: replace the manual implementation with a derive attribute and mark the default variant
+    |
+440 + #[derive(Default)]
+441 | pub enum LineJoin {
+442 |     /// 圆角连接（`<a:round/>`，默认）。
+443 ~     #[default]
+444 ~     Round,
+    |
+
+error: method `from_str` can be confused for the standard trait method `std::str::FromStr::from_str`
+    --> src/oxml/sppr.rs:1714:5
+     |
+1714 | /     pub fn from_str(s: &str) -> Self {
+1715 | |         match s {
+1716 | |             "orthographicFront" => CameraPreset::OrthographicFront,
+1717 | |             "isometricOffAxis1" => CameraPreset::IsometricOffAxis1,
+...    |
+1730 | |     }
+     | |_____^
+     |
+     = help: consider implementing the trait `std::str::FromStr` or choosing a less ambiguous method name
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#should_implement_trait
+
+error: method `from_str` can be confused for the standard trait method `std::str::FromStr::from_str`
+    --> src/oxml/sppr.rs:1826:5
+     |
+1826 | /     pub fn from_str(s: &str) -> Self {
+1827 | |         match s {
+1828 | |             "balanced" => LightRigType::Balanced,
+1829 | |             "bright" => LightRigType::Bright,
+...    |
+1842 | |     }
+     | |_____^
+     |
+     = help: consider implementing the trait `std::str::FromStr` or choosing a less ambiguous method name
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#should_implement_trait
+
+error: method `from_str` can be confused for the standard trait method `std::str::FromStr::from_str`
+    --> src/oxml/sppr.rs:1883:5
+     |
+1883 | /     pub fn from_str(s: &str) -> Self {
+1884 | |         match s {
+1885 | |             "tl" => LightRigDirection::TopLeft,
+1886 | |             "t" => LightRigDirection::Top,
+...    |
+1895 | |     }
+     | |_____^
+     |
+     = help: consider implementing the trait `std::str::FromStr` or choosing a less ambiguous method name
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#should_implement_trait
+
+error: method `from_str` can be confused for the standard trait method `std::str::FromStr::from_str`
+    --> src/oxml/sppr.rs:2141:5
+     |
+2141 | /     pub fn from_str(s: &str) -> Self {
+2142 | |         match s {
+2143 | |             "warmMatte" => MaterialPreset::WarmMatte,
+2144 | |             "clear" => MaterialPreset::Clear,
+...    |
+2159 | |     }
+     | |_____^
+     |
+     = help: consider implementing the trait `std::str::FromStr` or choosing a less ambiguous method name
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#should_implement_trait
+
+error: this `impl` can be derived
+   --> src/oxml/theme.rs:137:1
+    |
+137 | / impl Default for ThemeColor {
+138 | |     fn default() -> Self {
+139 | |         ThemeColor::None
+140 | |     }
+141 | | }
+    | |_^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#derivable_impls
+help: replace the manual implementation with a derive attribute and mark the default variant
+    |
+128 + #[derive(Default)]
+129 | pub enum ThemeColor {
+130 |     /// sRGB 颜色（`<a:srgbClr val="RRGGBB"/>`）。
+...
+134 |     /// 无颜色（解析失败或空槽位）。
+135 ~     #[default]
+136 ~     None,
+    |
+
+error: unnecessary use of `to_string`
+   --> src/oxml/theme.rs:415:29
+    |
+415 | / ...   &a.normalized_value(quick_xml::XmlVersion::Implicit1_0)
+416 | | ...       .unwrap_or_default()
+417 | | ...       .to_string(),
+    | |______________________^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#unnecessary_to_owned
+    = note: `-D clippy::unnecessary-to-owned` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::unnecessary_to_owned)]`
+help: use
+    |
+415 ~                             a.normalized_value(quick_xml::XmlVersion::Implicit1_0)
+416 ~                                 .unwrap_or_default().as_ref(),
+    |
+
+error: unnecessary use of `to_string`
+   --> src/oxml/theme.rs:462:13
+    |
+462 | /             &a.normalized_value(quick_xml::XmlVersion::Implicit1_0)
+463 | |                 .unwrap_or_default()
+464 | |                 .to_string(),
+    | |____________________________^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#unnecessary_to_owned
+help: use
+    |
+462 ~             a.normalized_value(quick_xml::XmlVersion::Implicit1_0)
+463 ~                 .unwrap_or_default().as_ref(),
+    |
+
+error: unnecessary use of `to_string`
+   --> src/oxml/theme.rs:486:25
+    |
+486 | / ...   &a.normalized_value(quick_xml::XmlVersion::Implicit1_0)
+487 | | ...       .unwrap_or_default()
+488 | | ...       .to_string(),
+    | |______________________^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#unnecessary_to_owned
+help: use
+    |
+486 ~                         a.normalized_value(quick_xml::XmlVersion::Implicit1_0)
+487 ~                             .unwrap_or_default().as_ref(),
+    |
+
+error: unnecessary use of `to_string`
+   --> src/oxml/theme.rs:520:25
+    |
+520 | / ...   &a.normalized_value(quick_xml::XmlVersion::Implicit1_0)
+521 | | ...       .unwrap_or_default()
+522 | | ...       .to_string(),
+    | |______________________^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#unnecessary_to_owned
+help: use
+    |
+520 ~                         a.normalized_value(quick_xml::XmlVersion::Implicit1_0)
+521 ~                             .unwrap_or_default().as_ref(),
+    |
+
+error: deref which would be done by auto-deref
+   --> src/oxml/theme.rs:532:52
+    |
+532 |                 let text_str = std::str::from_utf8(&*t).unwrap_or("");
+    |                                                    ^^^ help: try: `&t`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#explicit_auto_deref
+
+error: this `impl` can be derived
+  --> src/oxml/txbody.rs:87:1
+   |
+87 | / impl Default for BulletStyle {
+88 | |     fn default() -> Self {
+89 | |         BulletStyle::None
+90 | |     }
+91 | | }
+   | |_^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#derivable_impls
+help: replace the manual implementation with a derive attribute and mark the default variant
+   |
+70 + #[derive(Default)]
+71 | pub enum BulletStyle {
+72 |     /// 无项目符号（`<a:buNone/>`）。
+73 ~     #[default]
+74 ~     None,
+   |
+
+error: this `impl` can be derived
+   --> src/oxml/txbody.rs:766:1
+    |
+766 | / impl Default for FieldType {
+767 | |     fn default() -> Self {
+768 | |         FieldType::SlideNumber
+769 | |     }
+770 | | }
+    | |_^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#derivable_impls
+help: replace the manual implementation with a derive attribute and mark the default variant
+    |
+749 + #[derive(Default)]
+750 | pub enum FieldType {
+751 |     /// 幻灯片编号（`type="slidenum"`）。
+752 ~     #[default]
+753 ~     SlideNumber,
+    |
+
+error: very complex type used. Consider factoring parts into `type` definitions
+    --> src/presentation.rs:1280:36
+     |
+1280 |               let mut diagram_tasks: Vec<(
+     |  ____________________________________^
+1281 | |                 String, // dm_rid
+1282 | |                 String, // lo_rid
+1283 | |                 String, // qs_rid
+...    |
+1288 | |                 String, // colors_partname
+1289 | |             )> = Vec::new();
+     | |______________^
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#type_complexity
+     = note: `-D clippy::type-complexity` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[allow(clippy::type_complexity)]`
+
+error: doc list item without indentation
+ --> src/shape/chartshape.rs:5:5
+  |
+5 | //! 本高阶 API 把 graphicFrame 包装为 [`ChartShape`]，提供类型 / 数据 / rid
+  |     ^
+  |
+  = help: if this is supposed to be its own paragraph, add a blank line
+  = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#doc_lazy_continuation
+  = note: `-D clippy::doc-lazy-continuation` implied by `-D warnings`
+  = help: to override `-D warnings` add `#[allow(clippy::doc_lazy_continuation)]`
+help: indent this line
+  |
+5 | //!   本高阶 API 把 graphicFrame 包装为 [`ChartShape`]，提供类型 / 数据 / rid
+  |     ++
+
+error: doc list item without indentation
+ --> src/shape/chartshape.rs:6:5
+  |
+6 | //! 的便捷访问，并让 [`Shape`] trait 直接可用。
+  |     ^
+  |
+  = help: if this is supposed to be its own paragraph, add a blank line
+  = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#doc_lazy_continuation
+help: indent this line
+  |
+6 | //!   的便捷访问，并让 [`Shape`] trait 直接可用。
+  |     ++
+
+error: field assignment outside of initializer for an instance created with Default::default()
+  --> src/shape/chartshape.rs:57:9
+   |
+57 |         frame.graphic = OxmlGraphic::Chart(chart);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+note: consider initializing the variable with `oxml::shape::GraphicFrame { graphic: OxmlGraphic::Chart(chart), ..Default::default() }` and removing relevant reassignments
+  --> src/shape/chartshape.rs:56:9
+   |
+56 |         let mut frame = OxmlFrame::default();
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#field_reassign_with_default
+   = note: `-D clippy::field-reassign-with-default` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::field_reassign_with_default)]`
+
+error: creating a new box
+   --> src/shape/group.rs:150:21
+    |
+150 |                     *g = Box::new(sub.group);
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^ help: replace existing content with inner value instead: `**g = sub.group`
+    |
+    = note: this creates a needless allocation
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#replace_box
+    = note: `-D clippy::replace-box` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::replace_box)]`
+
+error: doc list item without indentation
+ --> src/shape/oleshape.rs:5:5
+  |
+5 | //! 本高阶 API 把 graphicFrame 包装为 [`OleObjectShape`]，提供 rid / imag...
+  |     ^
+  |
+  = help: if this is supposed to be its own paragraph, add a blank line
+  = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#doc_lazy_continuation
+help: indent this line
+  |
+5 | //!   本高阶 API 把 graphicFrame 包装为 [`OleObjectShape`]，提供 rid / image_rid /
+  |     ++
+
+error: doc list item without indentation
+ --> src/shape/oleshape.rs:6:5
+  |
+6 | //! prog_id / name / show_as_icon 的便捷访问，并让 [`Shape`] trait 直接...
+  |     ^
+  |
+  = help: if this is supposed to be its own paragraph, add a blank line
+  = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#doc_lazy_continuation
+help: indent this line
+  |
+6 | //!   prog_id / name / show_as_icon 的便捷访问，并让 [`Shape`] trait 直接可用。
+  |     ++
+
+error: field assignment outside of initializer for an instance created with Default::default()
+  --> src/shape/oleshape.rs:57:9
+   |
+57 |         frame.graphic = OxmlGraphic::OleObject(ole);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+note: consider initializing the variable with `oxml::shape::GraphicFrame { graphic: OxmlGraphic::OleObject(ole), ..Default::default() }` and removing relevant reassignments
+  --> src/shape/oleshape.rs:56:9
+   |
+56 |         let mut frame = OxmlFrame::default();
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#field_reassign_with_default
+
+error: doc list item without indentation
+   --> src/shape/picture.rs:306:9
+    |
+306 |     /// 二者独立，互不影响。
+    |         ^
+    |
+    = help: if this is supposed to be its own paragraph, add a blank line
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#doc_lazy_continuation
+help: indent this line
+    |
+306 |     ///   二者独立，互不影响。
+    |         ++
+
+error: field assignment outside of initializer for an instance created with Default::default()
+  --> src/shape/smartartshape.rs:62:9
+   |
+62 |         frame.graphic = OxmlGraphic::SmartArt(smart);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+note: consider initializing the variable with `oxml::shape::GraphicFrame { graphic: OxmlGraphic::SmartArt(smart), ..Default::default() }` and removing relevant reassignments
+  --> src/shape/smartartshape.rs:61:9
+   |
+61 |         let mut frame = OxmlFrame::default();
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#field_reassign_with_default
+
+error: field assignment outside of initializer for an instance created with Default::default()
+  --> src/shape/smartartshape.rs:70:9
+   |
+70 |         frame.graphic = OxmlGraphic::SmartArt(smart);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+note: consider initializing the variable with `oxml::shape::GraphicFrame { graphic: OxmlGraphic::SmartArt(smart), ..Default::default() }` and removing relevant reassignments
+  --> src/shape/smartartshape.rs:69:9
+   |
+69 |         let mut frame = OxmlFrame::default();
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#field_reassign_with_default
+
+error: this function has too many arguments (8/7)
+    --> src/slide.rs:2176:5
+     |
+2176 | /     pub fn add_chart_with_excel<L, T, W, H>(
+2177 | |         &mut self,
+2178 | |         chart_type: crate::oxml::chart::ChartType,
+2179 | |         data: crate::oxml::chart::ChartData,
+...    |
+2189 | |         W: EmuExt,
+2190 | |         H: EmuExt,
+     | |__________________^
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#too_many_arguments
+     = note: `-D clippy::too-many-arguments` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[allow(clippy::too_many_arguments)]`
+
+error: this function has too many arguments (8/7)
+    --> src/slide.rs:2268:5
+     |
+2268 | /     pub fn add_ole_object<L, T, W, H, P>(
+2269 | |         &mut self,
+2270 | |         path: P,
+2271 | |         prog_id: &str,
+...    |
+2282 | |         H: EmuExt,
+2283 | |         P: AsRef<std::path::Path>,
+     | |__________________________________^
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#too_many_arguments
+
+error: this function has too many arguments (9/7)
+    --> src/slide.rs:2387:5
+     |
+2387 | /     pub fn add_smartart_from_xml<L, T, W, H>(
+2388 | |         &mut self,
+2389 | |         data_xml: &str,
+2390 | |         layout_xml: &str,
+...    |
+2401 | |         W: EmuExt,
+2402 | |         H: EmuExt,
+     | |__________________^
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#too_many_arguments
+
+error: this function has too many arguments (9/7)
+    --> src/slide.rs:2498:5
+     |
+2498 | /     pub fn add_smartart<L, T, W, H>(
+2499 | |         &mut self,
+2500 | |         data_model: crate::oxml::diagram::DataModel,
+2501 | |         layout_def: crate::oxml::diagram::LayoutDef,
+...    |
+2512 | |         W: EmuExt,
+2513 | |         H: EmuExt,
+     | |__________________^
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#too_many_arguments
+
+error: could not compile `pptx-rs` (lib) due to 47 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: field assignment outside of initializer for an instance created with Default::default()
+    --> src/oxml/shape.rs:1042:9
+     |
+1042 |         sp.id = 1;
+     |         ^^^^^^^^^^
+     |
+note: consider initializing the variable with `oxml::shape::Sp { id: 1, name: "Test".into(), locks: Some(ShapeLocks {
+                  no_select: true,
+                  no_move: true,
+                  ..Default::default()
+              }), ..Default::default() }` and removing relevant reassignments
+    --> src/oxml/shape.rs:1041:9
+     |
+1041 |         let mut sp = Sp::default();
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#field_reassign_with_default
+     = note: `-D clippy::field-reassign-with-default` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[allow(clippy::field_reassign_with_default)]`
+
+error: field assignment outside of initializer for an instance created with Default::default()
+    --> src/oxml/shape.rs:1072:9
+     |
+1072 |         pic.id = 1;
+     |         ^^^^^^^^^^^
+     |
+note: consider initializing the variable with `oxml::shape::Pic { id: 1, name: "Video 1".into(), rid: "rIdImg1".into(), media: Some(MediaKind::Video {
+                  rid: "rIdVideo1".into(),
+              }), ..Default::default() }` and removing relevant reassignments
+    --> src/oxml/shape.rs:1071:9
+     |
+1071 |         let mut pic = Pic::default();
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#field_reassign_with_default
+
+error: field assignment outside of initializer for an instance created with Default::default()
+    --> src/oxml/shape.rs:1100:9
+     |
+1100 |         pic.id = 2;
+     |         ^^^^^^^^^^^
+     |
+note: consider initializing the variable with `oxml::shape::Pic { id: 2, name: "Audio 1".into(), rid: "rIdImg2".into(), media: Some(MediaKind::Audio {
+                  rid: "rIdAudio1".into(),
+              }), ..Default::default() }` and removing relevant reassignments
+    --> src/oxml/shape.rs:1099:9
+     |
+1099 |         let mut pic = Pic::default();
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#field_reassign_with_default
+
+error: field assignment outside of initializer for an instance created with Default::default()
+    --> src/oxml/shape.rs:1120:9
+     |
+1120 |         pic.id = 3;
+     |         ^^^^^^^^^^^
+     |
+note: consider initializing the variable with `oxml::shape::Pic { id: 3, name: "Plain Picture".into(), rid: "rIdImg3".into(), ..Default::default() }` and removing relevant reassignments
+    --> src/oxml/shape.rs:1119:9
+     |
+1119 |         let mut pic = Pic::default();
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#field_reassign_with_default
+
+error: field assignment outside of initializer for an instance created with Default::default()
+    --> src/oxml/shape.rs:1163:9
+     |
+1163 |         frame.id = 100;
+     |         ^^^^^^^^^^^^^^^
+     |
+note: consider initializing the variable with `oxml::shape::GraphicFrame { id: 100, name: "SmartArt 1".into(), ..Default::default() }` and removing relevant reassignments
+    --> src/oxml/shape.rs:1162:9
+     |
+1162 |         let mut frame = GraphicFrame::default();
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#field_reassign_with_default
+
+error: field assignment outside of initializer for an instance created with Default::default()
+    --> src/oxml/sppr.rs:2474:9
+     |
+2474 | /         effects.glow = Some(GlowEffect {
+2475 | |             rad: 50000,
+2476 | |             color: Color::RGB(RGBColor(0xFF, 0x00, 0xFF)),
+2477 | |         });
+     | |___________^
+     |
+note: consider initializing the variable with `oxml::sppr::EffectList { glow: Some(GlowEffect {
+                  rad: 50000,
+                  color: Color::RGB(RGBColor(0xFF, 0x00, 0xFF)),
+              }), soft_edge: Some(SoftEdgeEffect { rad: 25000 }), ..Default::default() }` and removing relevant reassignments
+    --> src/oxml/sppr.rs:2473:9
+     |
+2473 |         let mut effects = EffectList::default();
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#field_reassign_with_default
+
+error: field assignment outside of initializer for an instance created with Default::default()
+    --> src/oxml/sppr.rs:2492:9
+     |
+2492 | /         effects.reflection = Some(ReflectionEffect {
+2493 | |             blur_rad: Some(50000),
+2494 | |             st_a: Some(52000),
+2495 | |             st_pos: Some(0),
+...    |
+2500 | |             rot_with_shape: None,
+2501 | |         });
+     | |___________^
+     |
+note: consider initializing the variable with `oxml::sppr::EffectList { reflection: Some(ReflectionEffect {
+                  blur_rad: Some(50000),
+                  st_a: Some(52000),
+                  st_pos: Some(0),
+                  end_a: Some(30000),
+                  end_pos: Some(50000),
+                  dist: Some(38100),
+                  dir: Some(5_400_000),
+                  rot_with_shape: None,
+              }), ..Default::default() }` and removing relevant reassignments
+    --> src/oxml/sppr.rs:2491:9
+     |
+2491 |         let mut effects = EffectList::default();
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#field_reassign_with_default
+
+error: field assignment outside of initializer for an instance created with Default::default()
+    --> src/oxml/sppr.rs:2821:9
+     |
+2821 |         sp.scene3d = Some(Scene3d::default());
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     |
+note: consider initializing the variable with `oxml::sppr::ShapeProperties { scene3d: Some(Scene3d::default()), sp3d: Some(Sp3d::default()), ..Default::default() }` and removing relevant reassignments
+    --> src/oxml/sppr.rs:2820:9
+     |
+2820 |         let mut sp = ShapeProperties::default();
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#field_reassign_with_default
+
+error: field assignment outside of initializer for an instance created with Default::default()
+   --> src/oxml/theme.rs:606:9
+    |
+606 |         theme.name = "Test Theme".to_string();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+note: consider initializing the variable with `oxml::theme::Theme { name: "Test Theme".to_string(), ..Default::default() }` and removing relevant reassignments
+   --> src/oxml/theme.rs:605:9
+    |
+605 |         let mut theme = Theme::default();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#field_reassign_with_default
+
+error: field assignment outside of initializer for an instance created with Default::default()
+   --> src/oxml/theme.rs:671:9
+    |
+671 |         scheme.name = "Test".to_string();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+note: consider initializing the variable with `oxml::theme::ColorScheme { name: "Test".to_string(), dk1: Some(ThemeColor::Srgb("000000".to_string())), lt1: Some(ThemeColor::Srgb("FFFFFF".to_string())), accent1: Some(ThemeColor::Srgb("4F81BD".to_string())), ..Default::default() }` and removing relevant reassignments
+   --> src/oxml/theme.rs:670:9
+    |
+670 |         let mut scheme = ColorScheme::default();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#field_reassign_with_default
+
+error: field assignment outside of initializer for an instance created with Default::default()
+   --> src/oxml/theme.rs:692:9
+    |
+692 |         fs.name = "Test".to_string();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+note: consider initializing the variable with `oxml::theme::FontScheme { name: "Test".to_string(), major_latin: "Calibri Light".to_string(), major_ea: "宋体".to_string(), minor_latin: "Calibri".to_string(), minor_ea: "宋体".to_string(), ..Default::default() }` and removing relevant reassignments
+   --> src/oxml/theme.rs:691:9
+    |
+691 |         let mut fs = FontScheme::default();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#field_reassign_with_default
+
+error: field assignment outside of initializer for an instance created with Default::default()
+   --> src/oxml/theme.rs:746:9
+    |
+746 |         fmt.name = "Test".to_string();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+note: consider initializing the variable with `oxml::theme::FormatScheme { name: "Test".to_string(), raw_xml: sample_fmt_scheme_raw_xml().to_string(), ..Default::default() }` and removing relevant reassignments
+   --> src/oxml/theme.rs:745:9
+    |
+745 |         let mut fmt = FormatScheme::default();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#field_reassign_with_default
+
+error: field assignment outside of initializer for an instance created with Default::default()
+   --> src/oxml/theme.rs:776:9
+    |
+776 |         fmt.raw_xml = sample_fmt_scheme_raw_xml().to_string();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+note: consider initializing the variable with `oxml::theme::FormatScheme { raw_xml: sample_fmt_scheme_raw_xml().to_string(), ..Default::default() }` and removing relevant reassignments
+   --> src/oxml/theme.rs:775:9
+    |
+775 |         let mut fmt = FormatScheme::default();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#field_reassign_with_default
+
+error: field assignment outside of initializer for an instance created with Default::default()
+   --> src/oxml/theme.rs:817:9
+    |
+817 |         fmt.name = "Office".to_string();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+note: consider initializing the variable with `oxml::theme::FormatScheme { name: "Office".to_string(), raw_xml: sample_fmt_scheme_raw_xml().to_string(), ..Default::default() }` and removing relevant reassignments
+   --> src/oxml/theme.rs:816:9
+    |
+816 |         let mut fmt = FormatScheme::default();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#field_reassign_with_default
+
+error: field assignment outside of initializer for an instance created with Default::default()
+   --> src/oxml/theme.rs:855:9
+    |
+855 |         fmt.raw_xml = sample_fmt_scheme_raw_xml().to_string();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+note: consider initializing the variable with `oxml::theme::FormatScheme { raw_xml: sample_fmt_scheme_raw_xml().to_string(), ..Default::default() }` and removing relevant reassignments
+   --> src/oxml/theme.rs:854:9
+    |
+854 |         let mut fmt = FormatScheme::default();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#field_reassign_with_default
+
+error: field assignment outside of initializer for an instance created with Default::default()
+   --> src/oxml/theme.rs:881:9
+    |
+881 |         fmt.name = "Office".to_string();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+note: consider initializing the variable with `oxml::theme::FormatScheme { name: "Office".to_string(), raw_xml: r#"<a:customChild/>"#.to_string(), ..Default::default() }` and removing relevant reassignments
+   --> src/oxml/theme.rs:880:9
+    |
+880 |         let mut fmt = FormatScheme::default();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#field_reassign_with_default
+
+error: field assignment outside of initializer for an instance created with Default::default()
+   --> src/oxml/theme.rs:943:9
+    |
+943 |         fmt.raw_xml = fmt_inner.to_string();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+note: consider initializing the variable with `oxml::theme::FormatScheme { raw_xml: fmt_inner.to_string(), ..Default::default() }` and removing relevant reassignments
+   --> src/oxml/theme.rs:942:9
+    |
+942 |         let mut fmt = FormatScheme::default();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#field_reassign_with_default
+
+error: field assignment outside of initializer for an instance created with Default::default()
+   --> src/oxml/theme.rs:969:9
+    |
+969 |         fmt.raw_xml = sample_fmt_scheme_raw_xml().to_string();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+note: consider initializing the variable with `oxml::theme::FormatScheme { raw_xml: sample_fmt_scheme_raw_xml().to_string(), ..Default::default() }` and removing relevant reassignments
+   --> src/oxml/theme.rs:968:9
+    |
+968 |         let mut fmt = FormatScheme::default();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#field_reassign_with_default
+
+error: approximate value of `f{32, 64}::consts::PI` found
+    --> src/presentation.rs:3293:55
+     |
+3293 |         props.set("Float", CustomPropertyValue::Float(3.14));
+     |                                                       ^^^^
+     |
+     = help: consider using the constant directly
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#approx_constant
+     = note: `#[deny(clippy::approx_constant)]` on by default
+
+error: used `assert_eq!` with a literal bool
+    --> src/presentation.rs:3343:51
+     |
+3343 |             Some(CustomPropertyValue::Bool(b)) => assert_eq!(*b, false),
+     |                                                   ^^^^^^^^^^^^^^^^^^^^^
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#bool_assert_comparison
+     = note: `-D clippy::bool-assert-comparison` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[allow(clippy::bool_assert_comparison)]`
+help: replace it with `assert!(..)`
+     |
+3343 -             Some(CustomPropertyValue::Bool(b)) => assert_eq!(*b, false),
+3343 +             Some(CustomPropertyValue::Bool(b)) => assert!(!(*b)),
+     |
+
+error: approximate value of `f{32, 64}::consts::PI` found
+    --> src/presentation.rs:3347:65
+     |
+3347 | ...   Some(CustomPropertyValue::Float(f)) => assert!((f - 3.14).abs() ...
+     |                                                           ^^^^
+     |
+     = help: consider using the constant directly
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#approx_constant
+
+error: field assignment outside of initializer for an instance created with Default::default()
+  --> src/shape/chartshape.rs:57:9
+   |
+57 |         frame.graphic = OxmlGraphic::Chart(chart);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+note: consider initializing the variable with `oxml::shape::GraphicFrame { graphic: OxmlGraphic::Chart(chart), ..Default::default() }` and removing relevant reassignments
+  --> src/shape/chartshape.rs:56:9
+   |
+56 |         let mut frame = OxmlFrame::default();
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#field_reassign_with_default
+
+error: struct update has no effect, all the fields in the struct have already been specified
+    --> src/slide.rs:3320:15
+     |
+3320 |             ..Default::default()
+     |               ^^^^^^^^^^^^^^^^^^
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#needless_update
+     = note: `-D clippy::needless-update` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[allow(clippy::needless_update)]`
+
+error: struct update has no effect, all the fields in the struct have already been specified
+    --> src/slide.rs:3381:15
+     |
+3381 |             ..Default::default()
+     |               ^^^^^^^^^^^^^^^^^^
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#needless_update
+
+error: variable `valAx_count` should have a snake case name
+    --> src/oxml/chart.rs:1481:13
+     |
+1481 |         let valAx_count = xml.matches("<c:valAx>").count();
+     |             ^^^^^^^^^^^ help: convert the identifier to snake case: `val_ax_count`
+     |
+     = note: `-D non-snake-case` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[allow(non_snake_case)]`
+
+error: variable `valAx_count` should have a snake case name
+    --> src/oxml/chart.rs:2143:13
+     |
+2143 |         let valAx_count = xml.matches("<c:valAx>").count();
+     |             ^^^^^^^^^^^ help: convert the identifier to snake case: `val_ax_count`
+
+error: could not compile `pptx-rs` (lib test) due to 72 previous errors
