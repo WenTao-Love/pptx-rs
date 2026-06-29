@@ -1,5 +1,5 @@
 [package]
-name = "pptx-rs"
+name = "pptx-rs2"
 version = "0.3.0"
 edition = "2021"
 rust-version = "1.75"
@@ -10,7 +10,7 @@ keywords = ["pptx", "powerpoint", "office-open-xml", "opc", "drawingml"]
 categories = ["parser-implementations", "encoding"]
 repository = "https://github.com/WenTao-Love/pptx-rs"
 homepage = "https://github.com/WenTao-Love/pptx-rs"
-documentation = "https://docs.rs/pptx-rs"
+documentation = "https://docs.rs/pptx-rs2"
 authors = ["pptx-rs contributors"]
 # 发布时排除测试样本、Python 验证脚本、临时文件等非必要资源
 exclude = [
@@ -26,6 +26,12 @@ exclude = [
     "gen_ref.py",
     "debug-pptx-output-fail.md",
 ]
+
+# 显式指定 lib 名为 pptx_rs，使 crate 名（pptx-rs2）与 lib 名解耦：
+# - crates.io 上 crate 名为 pptx-rs2（原名 pptx-rs 已被占坑）
+# - 代码中 use pptx_rs::... 保持不变，对用户透明
+[lib]
+name = "pptx_rs"
 
 [dependencies]
 zip = { version = "8.6", default-features = false, features = ["deflate"] }

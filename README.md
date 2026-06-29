@@ -1,4 +1,4 @@
-﻿# pptx-rs
+# pptx-rs
 
 Rust 实现的 PowerPoint `.pptx` / `.ppt` 读写库，对标 [python-pptx](https://github.com/scanny/python-pptx)。
 
@@ -23,6 +23,22 @@ Rust 实现的 PowerPoint `.pptx` / `.ppt` 读写库，对标 [python-pptx](http
 - [ ] 完整母版 / 版式 / 主题
 - [ ] Chart（基础类型）
 - [ ] SmartArt
+
+## 安装
+
+```bash
+cargo add pptx-rs2
+```
+
+> **注意**：crates.io 上的 crate 名为 `pptx-rs2`（原名 `pptx-rs` 已被他人占坑），
+> 但代码中导入名为 `pptx_rs`（通过 `[lib] name = "pptx_rs"` 解耦）。使用时 `use pptx_rs::...`。
+
+或在 `Cargo.toml` 中手动添加：
+
+```toml
+[dependencies]
+pptx-rs2 = "0.3"
+```
 
 ## 快速开始
 

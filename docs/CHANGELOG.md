@@ -25,7 +25,8 @@
 
 - **crate 重命名**：`pptx` → `pptx_rs`（lib name 与 crates.io 已占用 crate 解冲突）
   - 所有 `use pptx::...` 改为 `use pptx_rs::...`（41 文件）
-  - 删除 `Cargo.toml` 中的 `[lib] name = "pptx"` 段，使用默认 lib name `pptx_rs`
+  - crates.io 上 crate 名为 `pptx-rs2`（原名 `pptx-rs` 已被他人占坑，只有 3 行代码的空 crate）
+  - 通过 `[lib] name = "pptx_rs"` 解耦 crate 名与 lib 名，代码中 `use pptx_rs::...` 保持不变
 - `Cargo.toml` 元数据完善：
   - 添加 `rust-version = "1.75"`（MSRV）
   - 添加 `repository` / `homepage` / `documentation` URL
