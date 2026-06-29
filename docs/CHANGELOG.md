@@ -7,6 +7,55 @@
 
 ### 新增
 
+- 无（待下一版本规划）。
+
+## [0.3.0] - 2026-06-29
+
+### 新增
+
+- **.ppt 97-2003 二进制格式支持**：水印注入 + RC4 CryptoAPI 加密
+  - `pptx_rs::ppt97` 模块（基于 `cfb` crate）：`add_watermark` / `encrypt` / `add_watermark_and_encrypt`
+  - 填补 python-pptx 不支持 .ppt 二进制格式的空白
+  - 水印特性：注入到 MainMaster 的 PPDrawing（覆盖所有幻灯片），FOPT 0x01C2 锁定不可编辑
+  - 加密特性：MS-OFFCRYPTO 规范 2.3.5 RC4 CryptoAPI，每个 persist 对象独立加密
+- `Error::Ppt97` 错误变体（错误枚举从 10 → 11 变体）
+- `#![forbid(unsafe_code)]` crate 级属性（与项目规则 §5 安全红线一致）
+
+### 变更
+
+- **crate 重命名**：`pptx` → `pptx_rs`（lib name 与 crates.io 已占用 crate 解冲突）
+  - 所有 `use pptx::...` 改为 `use pptx_rs::...`（41 文件）
+  - 删除 `Cargo.toml` 中的 `[lib] name = "pptx"` 段，使用默认 lib name `pptx_rs`
+- `Cargo.toml` 元数据完善：
+  - 添加 `rust-version = "1.75"`（MSRV）
+  - 添加 `repository` / `homepage` / `documentation` URL
+  - 完善 `keywords` / `categories` / `exclude` 列表
+- `Presentation::slides_mut().add_slide()` 新增 `id_counter: Rc<Cell<u32>>` 参数（API 破坏性变更）
+- 公开 API 稳定性窗口调整为 `0.3.x` 期间
+
+### 修复
+
+- 修复 `src/lib.rs` 文档/属性结构错乱（`//!` 文档块出现在 `#![deny]` 之后）
+- 修复 broken doc links：`[docs::ARCHITECTURE]` / `[docs::CHANGELOG]` 等改为 GitHub 绝对 URL
+- 补全 `Shapes` / `ShapesMut` 的 `Debug` 实现
+- 修复多项 clippy lint（`-D warnings` 全绿）：
+  - `derivable_impls`：8 处手写 `impl Default` 改为 `#[derive(Default)]` + `#[default]`
+  - `should_implement_trait`：6 处 `from_str` 方法改名为 `parse`
+  - `explicit_auto_deref`：8 处 `&*t` → `&t`
+  - `unnecessary_to_owned`：4 处 `.to_string()` → `.as_ref()`
+  - `field_reassign_with_default`：多处改为 struct literal 语法
+  - `collapsible_match` / `if_same_then_else` / `vec_init_then_push` / `replace_box` / `useless_format` / `unnecessary_unwrap` / `type_complexity` / `bool_assert_comparison` / `approx_constant` / `needless_update` / `non_snake_case` / `doc_lazy_continuation`
+  - `too_many_arguments`：4 处生产 API 加 `#[allow]` 属性（0.4 路线图再重构为 builder 模式）
+
+### 文档
+
+- `README.md` 更新至 0.3.0，添加已知限制说明（round-trip 保真缺口）
+- `LICENSE` 文件添加（MIT，版权 `2026 pptx-rs contributors`）
+
+### 持续开发积累（v6.6 - v6.7，自 0.2.0 后陆续合入，统一归入 0.3.0 发布）
+
+#### 新增
+
 - **测试覆盖率大幅提升（v6.7，TODO-041 持续推进）**：新增 25 个 P0 级集成测试，覆盖文本格式化、图表、备注/批注/自定义属性
   - `tests/text_format_integration.rs`（8 个测试）：Run 字体大小/加粗/斜体/下划线/删除线/RGB 颜色/主题色/段落对齐行距/文本框锚定自适应边距/多段落多 Run 混合/AutoShape 填充线条格式
   - `tests/chart_integration.rs`（8 个测试）：6 种图表类型 round-trip（柱/条/线/饼/散点/面积）+ 多图表混合单 slide + 多 slide 不同图表
@@ -302,7 +351,7 @@
   - 遍历 slide 的 `inner.shapes`，匹配 `OxmlSlideShape::Sp` 且 `is_placeholder && ph_type == target` 的形状，构造新 `TextBody` 调用 `set_text(text)` 替换
   - 零 panic 设计：找不到占位符时 setter 返回 `false`、getter 返回 `None`
 
-### 修复
+#### 修复
 
 - **编译错误与 clippy lint（v6.7）**：修复全部编译错误和 72+ 个 clippy lint
   - 修复 `examples/test_copy_ppt.rs` 未使用的 `Seek` 导入
@@ -328,7 +377,7 @@
 - **加密 Pictures stream**：修复加密后 WPS 无法打开的问题
   - 不再加密 Pictures stream（WPS 严格检查 Pictures stream 完整性）
 
-### 依赖
+#### 依赖
 
 - 新增 `sha1 = "0.10"`（.ppt RC4 CryptoAPI 密钥派生）
 - 新增 `cfb = "0.10"`（OLE2/CFB 容器读写）

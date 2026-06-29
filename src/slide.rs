@@ -15,8 +15,8 @@
 //! # 示例
 //!
 //! ```no_run
-//! use pptx::Presentation;
-//! use pptx::Inches;
+//! use pptx_rs::Presentation;
+//! use pptx_rs::Inches;
 //!
 //! let mut p = Presentation::new().unwrap();
 //! let counter = p.id_counter();
@@ -362,8 +362,8 @@ impl Slide {
     ///
     /// # 示例
     /// ```no_run
-    /// # use pptx::{Presentation, Inches, RGBColor};
-    /// # use pptx::oxml::color::Color;
+    /// # use pptx_rs::{Presentation, Inches, RGBColor};
+    /// # use pptx_rs::oxml::color::Color;
     /// # let mut p = Presentation::new().unwrap();
     /// # let counter = p.id_counter();
     /// # let s = p.slides_mut().add_slide(counter).unwrap();
@@ -733,7 +733,7 @@ impl Slide {
     /// # 示例
     ///
     /// ```no_run
-    /// # use pptx::Presentation;
+    /// # use pptx_rs::Presentation;
     /// # let mut p = Presentation::new().unwrap();
     /// # let counter = p.id_counter();
     /// # let s = p.slides_mut().add_slide(counter).unwrap();
@@ -757,7 +757,7 @@ impl Slide {
     /// # 示例
     ///
     /// ```no_run
-    /// # use pptx::{Presentation, Transition, TransitionSpeed, TransitionType};
+    /// # use pptx_rs::{Presentation, Transition, TransitionSpeed, TransitionType};
     /// # let mut p = Presentation::new().unwrap();
     /// # let counter = p.id_counter();
     /// # let s = p.slides_mut().add_slide(counter).unwrap();
@@ -889,8 +889,8 @@ impl Slide {
     /// # 示例
     ///
     /// ```no_run
-    /// use pptx::Presentation;
-    /// use pptx::Inches;
+    /// use pptx_rs::Presentation;
+    /// use pptx_rs::Inches;
     ///
     /// let mut p = Presentation::new().unwrap();
     /// let counter = p.id_counter();
@@ -1237,7 +1237,7 @@ impl<'a> Shapes<'a> {
     /// # 返回
     /// 返回的 `ShapeKind::Placeholder` 携带**继承后**的属性快照（clone），
     /// 修改返回值**不会**回写到 slide。如需修改 slide 上的占位符，请用
-    /// [`ShapesMut::placeholder_mut`]。
+    /// `ShapesMut::placeholder_mut`。
     ///
     /// # 继承规则
     /// 1. 若 slide 占位符 `xfrm.is_empty()`，从 layout 占位符继承 xfrm；
@@ -1593,7 +1593,7 @@ impl<'a> ShapesMut<'a> {
     ///
     /// # 示例
     /// ```no_run
-    /// use pptx::Presentation;
+    /// use pptx_rs::Presentation;
     ///
     /// let mut p = Presentation::new().unwrap();
     /// // 先取版式（避免与 slides_mut 的可变借用冲突）
@@ -1672,8 +1672,8 @@ impl<'a> ShapesMut<'a> {
     ///
     /// # 示例
     /// ```no_run
-    /// # use pptx::*;
-    /// # use pptx::oxml::chart::{ChartData, ChartSeries, ChartCategory, ChartType};
+    /// # use pptx_rs::*;
+    /// # use pptx_rs::oxml::chart::{ChartData, ChartSeries, ChartCategory, ChartType};
     /// # let mut prs = Presentation::new().unwrap();
     /// # let layout = prs.slide_layouts().get(0).cloned().unwrap();
     /// # let counter = prs.id_counter();
@@ -1755,7 +1755,7 @@ impl<'a> ShapesMut<'a> {
     ///
     /// # 示例
     /// ```no_run
-    /// # use pptx::*;
+    /// # use pptx_rs::*;
     /// # let mut prs = Presentation::new().unwrap();
     /// # let layout = prs.slide_layouts().get(0).cloned().unwrap();
     /// # let counter = prs.id_counter();
@@ -2038,8 +2038,8 @@ impl<'a> ShapesMut<'a> {
 
     /// 添加一个图表（TODO-004 基础图表支持）。
     ///
-    /// 当前支持 4 种图表类型：柱状图（[`ChartType::Column`]）、条形图（[`ChartType::Bar`]）、
-    /// 折线图（[`ChartType::Line`]）、饼图（[`ChartType::Pie`]）。数据通过 `<c:numCache>`
+    /// 当前支持 4 种图表类型：柱状图（`ChartType::Column`）、条形图（`ChartType::Bar`）、
+    /// 折线图（`ChartType::Line`）、饼图（`ChartType::Pie`）。数据通过 `<c:numCache>`
     /// 内嵌，不依赖嵌入 Excel。
     ///
     /// # 参数
@@ -2060,8 +2060,8 @@ impl<'a> ShapesMut<'a> {
     /// # 示例
     ///
     /// ```no_run
-    /// # use pptx::*;
-    /// # use pptx::oxml::chart::{ChartData, ChartSeries, ChartCategory, ChartType};
+    /// # use pptx_rs::*;
+    /// # use pptx_rs::oxml::chart::{ChartData, ChartSeries, ChartCategory, ChartType};
     /// # let mut prs = Presentation::new().unwrap();
     /// # let counter = prs.id_counter();
     /// # let slide = prs.slides_mut().add_slide(counter).unwrap();
@@ -2160,8 +2160,8 @@ impl<'a> ShapesMut<'a> {
     /// # 示例
     ///
     /// ```no_run
-    /// # use pptx::*;
-    /// # use pptx::oxml::chart::{ChartData, ChartSeries, ChartCategory, ChartType};
+    /// # use pptx_rs::*;
+    /// # use pptx_rs::oxml::chart::{ChartData, ChartSeries, ChartCategory, ChartType};
     /// # let mut prs = Presentation::new().unwrap();
     /// # let counter = prs.id_counter();
     /// # let slide = prs.slides_mut().add_slide(counter).unwrap();
@@ -2258,7 +2258,7 @@ impl<'a> ShapesMut<'a> {
     /// # 示例
     ///
     /// ```no_run
-    /// # use pptx::*;
+    /// # use pptx_rs::*;
     /// # let mut prs = Presentation::new().unwrap();
     /// # let counter = prs.id_counter();
     /// # let slide = prs.slides_mut().add_slide(counter).unwrap();
@@ -2346,11 +2346,11 @@ impl<'a> ShapesMut<'a> {
     ///
     /// # 内部流程
     ///
-    /// 1. 调用 [`Slide::allocate_diagram_rids`] 分配本 slide 内唯一的 4 个关系 id
+    /// 1. 调用 `Slide::allocate_diagram_rids` 分配本 slide 内唯一的 4 个关系 id
     ///    （`rIdDgmDataN` / `rIdDgmLayoutN` / `rIdDgmQsN` / `rIdDgmColorsN`）；
     /// 2. 用 4 个 rid 构造 [`SmartArtShape`]（内部通过 [`crate::oxml::shape::SmartArtRef::from_rids`]
     ///    生成 `<a:graphicData><dgm:relIds .../></a:graphicData>`）；
-    /// 3. 调用 [`Slide::next_diagram_index`] 取局部索引，构造 4 个 partname 占位
+    /// 3. 调用 `Slide::next_diagram_index` 取局部索引，构造 4 个 partname 占位
     ///    （`to_opc_package` 阶段会用全局索引重新分配，覆盖此处的占位）；
     /// 4. 注册 [`DiagramEntry`] 到本 slide（保存时由 `to_opc_package` 写出 4 个
     ///    diagram part + slide rels 的 4 个关系）；
@@ -2368,8 +2368,8 @@ impl<'a> ShapesMut<'a> {
     /// # 示例
     ///
     /// ```no_run
-    /// # use pptx::*;
-    /// # use pptx::shape::Shape;
+    /// # use pptx_rs::*;
+    /// # use pptx_rs::shape::Shape;
     /// # let mut prs = Presentation::new().unwrap();
     /// # let counter = prs.id_counter();
     /// # let slide = prs.slides_mut().add_slide(counter).unwrap();
@@ -2479,8 +2479,8 @@ impl<'a> ShapesMut<'a> {
     /// # 示例
     ///
     /// ```no_run
-    /// # use pptx::*;
-    /// use pptx::oxml::diagram::{DataModel, DataModelPoint, LayoutDef, QuickStyleDef, ColorsDef};
+    /// # use pptx_rs::*;
+    /// use pptx_rs::oxml::diagram::{DataModel, DataModelPoint, LayoutDef, QuickStyleDef, ColorsDef};
     /// # let mut prs = Presentation::new().unwrap();
     /// # let counter = prs.id_counter();
     /// # let slide = prs.slides_mut().add_slide(counter).unwrap();
@@ -2498,7 +2498,7 @@ impl<'a> ShapesMut<'a> {
     ///     ColorsDef::default(),
     ///     Inches(1.0), Inches(1.0), Inches(8.0), Inches(4.0),
     /// ).unwrap();
-    /// assert_eq!(sa.dm_rid().starts_with("rIdDgmData"), true);
+    /// assert!(sa.dm_rid().starts_with("rIdDgmData"));
     /// ```
     #[allow(clippy::too_many_arguments)]
     pub fn add_smartart<L, T, W, H>(
@@ -2571,7 +2571,7 @@ impl<'a> ShapesMut<'a> {
     /// # 示例
     ///
     /// ```no_run
-    /// # use pptx::*;
+    /// # use pptx_rs::*;
     /// # let mut prs = Presentation::new().unwrap();
     /// # let counter = prs.id_counter();
     /// # let slide = prs.slides_mut().add_slide(counter).unwrap();
@@ -2691,7 +2691,7 @@ impl<'a> ShapesMut<'a> {
     /// # 示例
     ///
     /// ```no_run
-    /// # use pptx::*;
+    /// # use pptx_rs::*;
     /// # let mut prs = Presentation::new().unwrap();
     /// # let counter = prs.id_counter();
     /// # let slide = prs.slides_mut().add_slide(counter).unwrap();
@@ -2994,11 +2994,11 @@ impl Slides {
     /// # 行为
     /// - 越界时返回 `Err(IndexOutOfRange)`；
     /// - `from_idx == to_idx` 时为 no-op；
-    /// - 移动后所有 `sld_id` / `rid` / `partname` 会重新分配（调用 [`reindex`]）。
+    /// - 移动后所有 `sld_id` / `rid` / `partname` 会重新分配（调用 `reindex`）。
     ///
     /// # 示例
     /// ```no_run
-    /// # use pptx::Presentation;
+    /// # use pptx_rs::Presentation;
     /// # let mut p = Presentation::new().unwrap();
     /// # let counter = p.id_counter();
     /// # p.slides_mut().add_slide(counter.clone()).unwrap();
@@ -3044,11 +3044,11 @@ impl Slides {
     ///
     /// # 行为
     /// - 验证失败时返回 `Err` 且**不修改**当前顺序；
-    /// - 重排后所有 `sld_id` / `rid` / `partname` 会重新分配（调用 [`reindex`]）。
+    /// - 重排后所有 `sld_id` / `rid` / `partname` 会重新分配（调用 `reindex`）。
     ///
     /// # 示例
     /// ```no_run
-    /// # use pptx::Presentation;
+    /// # use pptx_rs::Presentation;
     /// # let mut p = Presentation::new().unwrap();
     /// # let counter = p.id_counter();
     /// # p.slides_mut().add_slide(counter.clone()).unwrap();

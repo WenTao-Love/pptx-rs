@@ -18,7 +18,7 @@
 //! # 限制
 //!
 //! - 递归 Group（Group 嵌套 Group）已支持；
-//! - 子形状可读取，也可通过 [`Group::add_child`] / [`Group::remove_child`] 增删。
+//! - 子形状可读取，也可通过 `Group::add_child` / `Group::remove_child` 增删。
 
 use crate::oxml::shape::Group as OxmlGroup;
 use crate::oxml::shape::GroupChild as OxmlGroupChild;

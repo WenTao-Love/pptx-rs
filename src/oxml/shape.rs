@@ -1,4 +1,4 @@
-//! 形状 XML 模型：`p:sp` / `p:pic` / `p:grpSp` / `p:cxnSp` / `p:graphicFrame`。
+﻿//! 形状 XML 模型：`p:sp` / `p:pic` / `p:grpSp` / `p:cxnSp` / `p:graphicFrame`。
 //!
 //! 包含 OOXML 中所有"可视对象"的强类型表达。每个类型都自带 `write_xml` 方法，
 //! 按规范要求的元素顺序输出。
@@ -128,7 +128,7 @@ impl ShapeLocks {
     /// # 示例
     ///
     /// ```no_run
-    /// # use pptx::oxml::shape::{ShapeLocks, LockType};
+    /// # use pptx_rs::oxml::shape::{ShapeLocks, LockType};
     /// let mut l = ShapeLocks::default();
     /// l.set_lock(LockType::Select, true);
     /// l.set_lock(LockType::Rotate, true);
@@ -727,7 +727,7 @@ impl SmartArtRef {
     /// # 示例
     ///
     /// ```no_run
-    /// use pptx::oxml::shape::SmartArtRef;
+    /// use pptx_rs::oxml::shape::SmartArtRef;
     /// let r = SmartArtRef::from_rids("rId1", "rId2", "rId3", "rId4");
     /// assert!(r.raw_xml.contains("r:dm=\"rId1\""));
     /// ```

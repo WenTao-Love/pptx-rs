@@ -104,7 +104,7 @@ impl Picture {
     /// 设置图片填充模式（拉伸/平铺/无）。
     ///
     /// 对应 OOXML `<a:stretch>` / `<a:tile>` 元素。
-    /// 默认为 [`BlipFillMode::Stretch`]（拉伸铺满）。
+    /// 默认为 `BlipFillMode::Stretch`（拉伸铺满）。
     pub fn set_fill_mode(&mut self, mode: crate::oxml::sppr::BlipFillMode) {
         self.pic.fill_mode = mode;
     }
@@ -237,8 +237,8 @@ impl Picture {
     ///
     /// # 示例
     /// ```no_run
-    /// use pptx::Presentation;
-    /// use pptx::units::Inches;
+    /// use pptx_rs::Presentation;
+    /// use pptx_rs::units::Inches;
     ///
     /// let mut p = Presentation::new().unwrap();
     /// let counter = p.id_counter();
@@ -292,7 +292,7 @@ impl Picture {
 
     /// 把本图片标记为**视频**形状（`<a:videoFile r:link="..."/>`）。
     ///
-    /// 调用后 [`Pic::write_xml`] 会在 `<p:nvPr>` 内写出 `<a:videoFile r:link="..."/>`，
+    /// 调用后 `Pic::write_xml` 会在 `<p:nvPr>` 内写出 `<a:videoFile r:link="..."/>`，
     /// PowerPoint 渲染时会把该 `<p:pic>` 当作视频形状处理（双击播放）。
     ///
     /// # 参数
@@ -307,8 +307,8 @@ impl Picture {
     ///
     /// # 示例
     /// ```no_run
-    /// # use pptx::Presentation;
-    /// # use pptx::units::Inches;
+    /// # use pptx_rs::Presentation;
+    /// # use pptx_rs::units::Inches;
     /// # let mut p = Presentation::new().unwrap();
     /// # let counter = p.id_counter();
     /// # let s = p.slides_mut().add_slide(counter).unwrap();

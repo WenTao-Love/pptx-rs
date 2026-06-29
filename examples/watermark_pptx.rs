@@ -1,4 +1,4 @@
-//! 读取现有 .pptx + 给每张幻灯片加水印 + 保存。
+﻿//! 读取现有 .pptx + 给每张幻灯片加水印 + 保存。
 //!
 //! 使用 OpcPackage 底层操作：直接在 slide XML 中注入水印 shape。
 //!
@@ -11,7 +11,7 @@
 
 use std::path::Path;
 
-use pptx::opc::OpcPackage;
+use pptx_rs::opc::OpcPackage;
 
 /// 水印 shape XML 模板。
 ///

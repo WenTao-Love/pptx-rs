@@ -1,4 +1,4 @@
-//! 集成测试：文本格式化端到端流程（TODO-041）。
+﻿//! 集成测试：文本格式化端到端流程（TODO-041）。
 //!
 //! 验证 TextFrame / ParagraphFormat / Font / ColorFormat 视图 API
 //! 从设置到 round-trip 的完整流程，确保关键 OOXML 元素不丢失。
@@ -12,13 +12,13 @@
 //! - 多段落多 Run 混合
 //! - 东亚字体设置
 
-use pptx::oxml::{
+use pptx_rs::oxml::{
     Alignment, Font, MsoAnchor, MsoAutoSize, MsoThemeColorIndex, ParagraphFormat, TextFrame,
     Underline,
 };
-use pptx::shape::PresetGeometry;
-use pptx::EmuExt;
-use pptx::{Inches, Presentation, Pt, RGBColor};
+use pptx_rs::shape::PresetGeometry;
+use pptx_rs::EmuExt;
+use pptx_rs::{Inches, Presentation, Pt, RGBColor};
 
 /// 验证 Run 的字体大小、加粗 round-trip。
 #[test]
@@ -249,7 +249,7 @@ fn multiple_paragraphs_and_runs_round_trip() {
 /// 验证 AutoShape 的填充和线条格式 round-trip。
 #[test]
 fn autoshape_fill_and_line_format_round_trip() {
-    use pptx::oxml::{FillFormat, LineFormat};
+    use pptx_rs::oxml::{FillFormat, LineFormat};
 
     let mut prs = Presentation::new().expect("Presentation::new failed");
     let counter = prs.id_counter();

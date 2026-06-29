@@ -1,4 +1,4 @@
-//! `Freeform` / `FreeformBuilder`：手绘自由形（`<a:custGeom>`）。
+﻿//! `Freeform` / `FreeformBuilder`：手绘自由形（`<a:custGeom>`）。
 //!
 //! 第一版只暴露"加路径点 → 关闭"的最小接口，足够画折线/多边形。
 //! 写入时把每个点用 `<a:moveTo>` / `<a:lnTo>` 表达，最终通过
@@ -20,9 +20,9 @@
 //! # 示例
 //!
 //! ```no_run
-//! use pptx::shape::FreeformBuilder;
-//! use pptx::EmuExt;
-//! use pptx::Inches;
+//! use pptx_rs::shape::FreeformBuilder;
+//! use pptx_rs::EmuExt;
+//! use pptx_rs::Inches;
 //!
 //! let mut builder = FreeformBuilder::new();
 //! builder.move_to(Inches(1.0).emu(), Inches(1.0).emu());

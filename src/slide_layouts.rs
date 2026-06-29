@@ -104,10 +104,10 @@ impl SlideLayoutRef {
 
     /// 返回所有占位符在 `shapes` 中的索引列表（TODO-008）。
     ///
-    /// 用于配合 [`shapes_mut`] 按索引修改占位符：
+    /// 用于配合 `shapes_mut` 按索引修改占位符：
     ///
     /// ```no_run
-    /// # use pptx::Presentation;
+    /// # use pptx_rs::Presentation;
     /// # let mut p = Presentation::new().unwrap();
     /// # let layout = p.slide_layouts().get(0).unwrap().clone();
     /// let indices = layout.placeholder_indices();
@@ -131,7 +131,7 @@ impl SlideLayoutRef {
     /// 按 `ph_idx` 查找占位符在 `shapes` 中的索引（TODO-008）。
     ///
     /// 返回第一个 `ph_idx` 匹配的 shapes 索引；未找到返回 `None`。
-    /// 用于配合 [`shapes_mut`] 修改特定占位符。
+    /// 用于配合 `shapes_mut` 修改特定占位符。
     pub fn placeholder_index_by_ph_idx(&self, ph_idx: u32) -> Option<usize> {
         self.oxml
             .borrow()

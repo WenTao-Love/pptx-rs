@@ -1,4 +1,4 @@
-//! 演示对齐 python-pptx 主要 API 的一次性 e2e：AutoShape / TextBox / Picture /
+﻿//! 演示对齐 python-pptx 主要 API 的一次性 e2e：AutoShape / TextBox / Picture /
 //! Connector / Group / Table / Freeform / Notes。
 //!
 //! 输出一个能被 PowerPoint 与 WPS 打开的 .pptx。
@@ -8,10 +8,10 @@
 //! cargo run --example shapes_demo
 //! ```
 
-use pptx::shape::MsoConnectorType;
-use pptx::shape::PresetGeometry;
-use pptx::{EmuExt, Inches, Pt, RGBColor};
-use pptx::{MsoShapeType, Presentation};
+use pptx_rs::shape::MsoConnectorType;
+use pptx_rs::shape::PresetGeometry;
+use pptx_rs::{EmuExt, Inches, Pt, RGBColor};
+use pptx_rs::{MsoShapeType, Presentation};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     // 1) 准备一个空 presentation
@@ -30,7 +30,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Inches(1.0),
     )?;
     rect.set_text("rectangle");
-    rect.set_fill_color(pptx::Color::RGB(RGBColor(200, 50, 50)));
+    rect.set_fill_color(pptx_rs::Color::RGB(RGBColor(200, 50, 50)));
     rect.set_stroke_color(RGBColor::BLACK);
     rect.set_stroke_width(Pt(1.0).emu());
 
@@ -42,7 +42,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Inches(1.0),
     )?;
     pent.set_text("Step 1");
-    pent.set_fill_color(pptx::Color::RGB(RGBColor(50, 50, 200)));
+    pent.set_fill_color(pptx_rs::Color::RGB(RGBColor(50, 50, 200)));
 
     // 3) TextBox：多段多 Run
     let mut tb = slide.shapes_mut().add_textbox_with_text(
@@ -57,7 +57,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         p.add_run_with_text("这是第二段（加粗）").set_bold(true);
         p.add_line_break();
         p.add_run_with_text("软回车后继续");
-        p.set_alignment(pptx::Alignment::Center);
+        p.set_alignment(pptx_rs::Alignment::Center);
     }
     tb.set_word_wrap(true);
 

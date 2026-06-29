@@ -1,15 +1,15 @@
 [package]
 name = "pptx-rs"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2021"
+rust-version = "1.75"
 description = "Rust 版本的 PowerPoint .pptx 读写库, 对标 python-pptx"
 license = "MIT"
 readme = "README.md"
 keywords = ["pptx", "powerpoint", "office-open-xml", "opc", "drawingml"]
 categories = ["parser-implementations", "encoding"]
-# 发布到 crates.io 时需替换为真实仓库地址
-repository = "https://github.com/pptx-rs/pptx-rs"
-homepage = "https://github.com/pptx-rs/pptx-rs"
+repository = "https://github.com/WenTao-Love/pptx-rs"
+homepage = "https://github.com/WenTao-Love/pptx-rs"
 documentation = "https://docs.rs/pptx-rs"
 authors = ["pptx-rs contributors"]
 # 发布时排除测试样本、Python 验证脚本、临时文件等非必要资源
@@ -26,10 +26,6 @@ exclude = [
     "gen_ref.py",
     "debug-pptx-output-fail.md",
 ]
-
-[lib]
-name = "pptx"
-path = "src/lib.rs"
 
 [dependencies]
 zip = { version = "8.6", default-features = false, features = ["deflate"] }

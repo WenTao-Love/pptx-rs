@@ -1,4 +1,4 @@
-//! 集成测试：Presentation 全流程（TODO-041）。
+﻿//! 集成测试：Presentation 全流程（TODO-041）。
 //!
 //! 验证 Presentation 的"新建 → 添加内容 → 保存 → 读取 → 验证 → 修改 → 再保存"
 //! 完整工作流，确保 round-trip 不丢失数据。
@@ -11,7 +11,7 @@
 //! - 多张幻灯片 round-trip（验证 slide 数量保持）
 //! - 保存到临时文件并读取
 
-use pptx::{Inches, Presentation};
+use pptx_rs::{Inches, Presentation};
 use tempfile::TempDir;
 
 /// 验证新建的空 Presentation 可以成功保存到 bytes。

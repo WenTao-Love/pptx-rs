@@ -1,15 +1,15 @@
-//! 演示连接器（直线/折线/曲线）和带 `add_connector_geom` 的几何风格。
+﻿//! 演示连接器（直线/折线/曲线）和带 `add_connector_geom` 的几何风格。
 //!
 //! 跑法（Rust 1.75+）：
 //! ```text
 //! cargo run --example connector_demo
 //! ```
 
-use pptx::oxml::LineFormat;
-use pptx::oxml::MsoLineDashStyle;
-use pptx::shape::{MsoConnectorType, Shape};
-use pptx::Presentation;
-use pptx::{Inches, Pt, RGBColor};
+use pptx_rs::oxml::LineFormat;
+use pptx_rs::oxml::MsoLineDashStyle;
+use pptx_rs::shape::{MsoConnectorType, Shape};
+use pptx_rs::Presentation;
+use pptx_rs::{Inches, Pt, RGBColor};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut prs = Presentation::new()?;

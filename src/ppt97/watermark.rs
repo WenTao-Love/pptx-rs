@@ -1,4 +1,4 @@
-//! .ppt 文件水印注入。
+﻿//! .ppt 文件水印注入。
 //!
 //! 本模块为 PowerPoint 97-2003 二进制格式（`.ppt`）文件注入水印。
 //! 水印作为 **MainMaster 母版的背景元素**注入到 PPDrawing 的 SpgrContainer 中，
@@ -99,7 +99,7 @@ const RT_STYLE_TEXT_PROP_ATOM: u16 = 0x0FA1;
 /// # 示例
 ///
 /// ```no_run
-/// use pptx::ppt97::watermark::WatermarkConfig;
+/// use pptx_rs::ppt97::watermark::WatermarkConfig;
 ///
 /// let config = WatermarkConfig {
 ///     text: "机密".to_string(),

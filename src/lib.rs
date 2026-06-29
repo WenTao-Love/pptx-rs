@@ -4,7 +4,7 @@
 //!
 //! `pptx-rs` 旨在以 Rust 的强类型 + 零 unsafe + 零异步的"现代化"姿态，完整复刻
 //! `python-pptx` 提供的 PowerPoint 文档读写能力，并在性能与可维护性上做到更优。
-//! 当前处于 **0.2.0** 阶段。
+//! 当前处于 **0.3.0** 阶段。
 //!
 //! # 顶层模块结构
 //!
@@ -29,20 +29,21 @@
 //!   zip crate
 //! ```
 //!
-//! 下层绝不依赖上层。详见 [`docs::ARCHITECTURE`] 与
-//! [`.trae/skills/pptx-rs-architecture`](../.trae/skills/pptx-rs-architecture/SKILL.md)。
+//! 下层绝不依赖上层。详见
+//! [架构总览](https://github.com/WenTao-Love/pptx-rs/blob/main/docs/ARCHITECTURE.md) 与
+//! [pptx-rs-architecture SKILL](https://github.com/WenTao-Love/pptx-rs/blob/main/.trae/skills/pptx-rs-architecture/SKILL.md)。
 //!
 //! # 最小示例
 //!
 //! ```no_run
-//! use pptx::Presentation;
+//! use pptx_rs::Presentation;
 //!
 //! let mut prs = Presentation::new().unwrap();
 //! let counter = prs.id_counter();
 //! let slide = prs.slides_mut().add_slide(counter).unwrap();
 //! let mut tb = slide.shapes_mut().add_textbox(
-//!     pptx::Inches(1.0), pptx::Inches(1.0),
-//!     pptx::Inches(8.0), pptx::Inches(1.0),
+//!     pptx_rs::Inches(1.0), pptx_rs::Inches(1.0),
+//!     pptx_rs::Inches(8.0), pptx_rs::Inches(1.0),
 //! ).unwrap();
 //! tb.set_text("hello");
 //! prs.save("hello.pptx").unwrap();
@@ -62,41 +63,42 @@
 //! # 错误处理
 //!
 //! 库内**禁止** `panic!` / `unwrap()`。所有公开 API 返回 [`Result<T>`]，错误统一归入
-//! [`enum Error`](Error) 的 10 个变体（`Io` / `Zip` / `Xml` / `Opc` / `Oxml` / `NotFound` /
-//! `IndexOutOfRange` / `NotImplemented` / `Encryption` / `Other`）。错误消息遵循**小写 + 句末无标点**。
+//! [`enum Error`](Error) 的 11 个变体（`Io` / `Zip` / `Xml` / `Opc` / `Oxml` / `NotFound` /
+//! `IndexOutOfRange` / `NotImplemented` / `Encryption` / `Ppt97` / `Other`）。错误消息遵循**小写 + 句末无标点**。
 //!
 //! # 公开 API 稳定性
 //!
-//! `0.1.x` 期间：
+//! `0.3.x` 期间：
 //!
 //! - `pub` 方法签名（方法名 / 参数 / 返回类型）—— **不承诺稳定**，允许小调整；
 //! - `pub` 字段 —— **不承诺稳定**，调整走 `CHANGELOG` 标注 `internal`；
 //! - 破坏性变更 —— 需先 `#[deprecated(note = "...")]` 一段时间。
 //!
-//! 详见 [`docs::CHANGELOG`] 与 [`.trae/rules/project_rules.md`](../.trae/rules/project_rules.md)。
+//! 详见 [更新日志](https://github.com/WenTao-Love/pptx-rs/blob/main/docs/CHANGELOG.md) 与
+//! [project_rules.md](https://github.com/WenTao-Love/pptx-rs/blob/main/.trae/rules/project_rules.md)。
 //!
 //! # 路线图
 //!
-//! 详见 [`README.md`](../README.md) 的"路线图"段、[`docs::CHANGELOG`] 与
-//! [`.trae/skills/pptx-rs-overview/SKILL.md`](../.trae/skills/pptx-rs-overview/SKILL.md)。
+//! 详见 [README.md 的"路线图"段](https://github.com/WenTao-Love/pptx-rs#路线图)、
+//! [更新日志](https://github.com/WenTao-Love/pptx-rs/blob/main/docs/CHANGELOG.md) 与
+//! [pptx-rs-overview SKILL](https://github.com/WenTao-Love/pptx-rs/blob/main/.trae/skills/pptx-rs-overview/SKILL.md)。
 //!
-//! [`docs::ARCHITECTURE`]: ../docs/ARCHITECTURE.md
-//! [`docs::CHANGELOG`]: ../docs/CHANGELOG.md
-
-#![deny(rust_2018_idioms)]
-#![warn(missing_debug_implementations)]
 //! # 编译期开关说明
 //!
+//! - `forbid(unsafe_code)`：库内**绝对禁止** `unsafe` 块（与项目规则 §5 一致）。
 //! - `deny(rust_2018_idioms)`：禁止 2015 风格的 idiom（`#[macro_use]`、路径写法等）。
 //! - `warn(missing_debug_implementations)`：所有 `pub` 类型应实现 `Debug`（如未实现会警告）。
-//!   当前 v0.1.0 中 `Shapes` / `ShapesMut` 暂未实现，未来需补 `#[derive(Debug)]`。
+
+#![forbid(unsafe_code)]
+#![deny(rust_2018_idioms)]
+#![warn(missing_debug_implementations)]
 
 /// 库统一的 `Result` 类型别名。所有公共 API（除特别声明）均返回该类型。
 ///
 /// # 示例
 ///
 /// ```no_run
-/// use pptx::Result;
+/// use pptx_rs::Result;
 ///
 /// fn read_something() -> Result<String> { Ok(String::new()) }
 /// ```

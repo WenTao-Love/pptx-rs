@@ -1,4 +1,4 @@
-//! # 端到端示例：在幻灯片中嵌入视频和音频（TODO-033）
+﻿//! # 端到端示例：在幻灯片中嵌入视频和音频（TODO-033）
 //!
 //! 演示 `pptx-rs` 的音视频嵌入 API：
 //!
@@ -30,7 +30,7 @@
 //! 实际使用时，应传入真实的 `.mp4` / `.mp3` 文件，PowerPoint 才能正确解码播放。
 //! 海报帧图片建议传入代表视频首帧的 `.png` / `.jpg` 文件。
 
-use pptx::{Inches, Presentation};
+use pptx_rs::{Inches, Presentation};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     // ---------- 1) 新建演示文稿 ----------

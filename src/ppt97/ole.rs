@@ -1,4 +1,4 @@
-//! OLE2/CFB 容器操作工具。
+﻿//! OLE2/CFB 容器操作工具。
 //!
 //! 本模块封装 [`cfb`] crate 的容器操作，提供 .ppt 文件（PowerPoint 97-2003
 //! 二进制格式）所需的 OLE2（Compound File Binary）容器读写与修复能力。
@@ -73,7 +73,7 @@ const ENDOFCHAIN: u32 = 0xFFFFFFFE;
 /// # 示例
 ///
 /// ```no_run
-/// use pptx::ppt97::ole::write_stream;
+/// use pptx_rs::ppt97::ole::write_stream;
 /// use cfb::CompoundFile;
 /// use std::fs::File;
 ///

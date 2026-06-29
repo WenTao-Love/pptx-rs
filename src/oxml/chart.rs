@@ -1,4 +1,4 @@
-//! 图表（Chart）OOXML 模型 —— 最小可用集（TODO-004）。
+﻿//! 图表（Chart）OOXML 模型 —— 最小可用集（TODO-004）。
 //!
 //! 本模块定义 `<c:chartSpace>` / `<c:chart>` / `<c:plotArea>` 等元素的强类型模型，
 //! 当前支持**柱状图 / 条形图 / 折线图 / 饼图 / 散点图 / 面积图**六种类型，且数据采用
@@ -897,7 +897,7 @@ fn format_f64(v: f64) -> String {
 /// # 示例
 ///
 /// ```no_run
-/// # use pptx::oxml::chart::{Chart, ChartType};
+/// # use pptx_rs::oxml::chart::{Chart, ChartType};
 /// let xml = std::fs::read_to_string("chart1.xml").unwrap();
 /// let chart = Chart::parse_from_xml(&xml).expect("parse chart");
 /// println!("type: {:?}, series: {}", chart.chart_type, chart.data.series.len());

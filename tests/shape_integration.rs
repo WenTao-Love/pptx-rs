@@ -1,4 +1,4 @@
-//! 集成测试：形状端到端流程（TODO-041）。
+﻿//! 集成测试：形状端到端流程（TODO-041）。
 //!
 //! 验证各种形状类型（文本框、自选形状、表格、连接器、组合）从添加到
 //! 序列化的完整流程，确保 round-trip 不丢失形状。
@@ -12,9 +12,9 @@
 //! - 组合形状添加
 //! - 多形状混合场景 round-trip
 
-use pptx::shape::Shape;
-use pptx::EmuExt;
-use pptx::{Inches, Presentation, PresetGeometry};
+use pptx_rs::shape::Shape;
+use pptx_rs::EmuExt;
+use pptx_rs::{Inches, Presentation, PresetGeometry};
 
 /// 验证文本框可以成功添加到幻灯片并 round-trip。
 #[test]
@@ -160,7 +160,7 @@ fn connector_round_trip() {
     let _cxn = slide
         .shapes_mut()
         .add_connector(
-            pptx::MsoConnectorType::Straight,
+            pptx_rs::MsoConnectorType::Straight,
             Inches(3.0),
             Inches(1.5),
             Inches(5.0),

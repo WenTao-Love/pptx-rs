@@ -1,8 +1,10 @@
-# pptx-rs
+﻿# pptx-rs
 
 Rust 实现的 PowerPoint `.pptx` / `.ppt` 读写库，对标 [python-pptx](https://github.com/scanny/python-pptx)。
 
-> 当前状态：**0.2.0** —— MVP + 文件加密。可创建 / 打开 / 保存 `.pptx`；支持幻灯片增删、文本框、段落、Run（带字体/字号/粗体/颜色/下划线）、图片插入、表格/连接器等基础形状；**支持 OOXML Agile Encryption 文件加密**（AES-256-CBC + SHA512，WPS/PowerPoint 兼容）；支持水印注入。**支持 .ppt（PowerPoint 97-2003 二进制格式）文件的 RC4 CryptoAPI 加密和水印注入**。完整的 Master / Layout / Theme / Chart / SmartArt 还在路线图上。
+> 当前状态：**0.3.0** —— MVP + 文件加密。可创建 / 打开 / 保存 `.pptx`；支持幻灯片增删、文本框、段落、Run（带字体/字号/粗体/颜色/下划线）、图片插入、表格/连接器等基础形状；**支持 OOXML Agile Encryption 文件加密**（AES-256-CBC + SHA512，WPS/PowerPoint 兼容）；支持水印注入。**支持 .ppt（PowerPoint 97-2003 二进制格式）文件的 RC4 CryptoAPI 加密和水印注入**。完整的 Master / Layout / Theme / Chart / SmartArt 还在路线图上。
+>
+> **已知限制**：打开已有 `.pptx` 再保存时，母版/版式/主题定制不会完整还原（使用默认主题）。建议用于创建新文件或修改 slide 内容，暂不建议用于完整 round-trip 保真场景。
 
 ## 路线图
 
@@ -25,15 +27,16 @@ Rust 实现的 PowerPoint `.pptx` / `.ppt` 读写库，对标 [python-pptx](http
 ## 快速开始
 
 ```rust
-use pptx::{Presentation, Pt, RGBColor};
+use pptx_rs::{Presentation, Pt, RGBColor};
 
-fn main() -> pptx::Result<()> {
+fn main() -> pptx_rs::Result<()> {
     // 1) 全新创建
     let mut prs = Presentation::new()?;
-    let slide = prs.slides_mut().add_slide()?;
+    let counter = prs.id_counter();
+    let slide = prs.slides_mut().add_slide(counter)?;
     slide.shapes_mut().add_textbox(
-        pptx::Inches(1.0), pptx::Inches(1.0),
-        pptx::Inches(8.0), pptx::Inches(1.0),
+        pptx_rs::Inches(1.0), pptx_rs::Inches(1.0),
+        pptx_rs::Inches(8.0), pptx_rs::Inches(1.0),
     )?
     .text_frame_mut()
     .set_text("Hello, rust-pptx!")
@@ -62,7 +65,7 @@ fn main() -> pptx::Result<()> {
 ## .ppt 97-2003 格式支持（库 API）
 
 `.ppt`（PowerPoint 97-2003 二进制格式）与 `.pptx`（ZIP+XML）是**完全不同**的两种格式。
-本库通过 `pptx::ppt97` 模块提供 `.ppt` 文件的**水印注入**与 **RC4 CryptoAPI 加密**能力，
+本库通过 `pptx_rs::ppt97` 模块提供 `.ppt` 文件的**水印注入**与 **RC4 CryptoAPI 加密**能力，
 填补 python-pptx 不支持 .ppt 二进制格式的空白。
 
 ### 模块组织
@@ -80,18 +83,18 @@ src/ppt97/
 
 | API | 功能 |
 | --- | --- |
-| `pptx::ppt97::add_watermark(path, &config)` | 为 .ppt 注入水印（不可编辑背景层） |
-| `pptx::ppt97::encrypt(path, password)` | 为 .ppt 设置 RC4 CryptoAPI 加密 |
-| `pptx::ppt97::add_watermark_and_encrypt(path, &config, password)` | 同时注入水印和加密（先水印后加密） |
-| `pptx::ppt97::WatermarkConfig` | 水印配置（文本、字号、颜色、旋转角度） |
+| `pptx_rs::ppt97::add_watermark(path, &config)` | 为 .ppt 注入水印（不可编辑背景层） |
+| `pptx_rs::ppt97::encrypt(path, password)` | 为 .ppt 设置 RC4 CryptoAPI 加密 |
+| `pptx_rs::ppt97::add_watermark_and_encrypt(path, &config, password)` | 同时注入水印和加密（先水印后加密） |
+| `pptx_rs::ppt97::WatermarkConfig` | 水印配置（文本、字号、颜色、旋转角度） |
 
 ### 库 API 示例
 
 ```rust
-use pptx::ppt97::{add_watermark, encrypt, add_watermark_and_encrypt, WatermarkConfig};
+use pptx_rs::ppt97::{add_watermark, encrypt, add_watermark_and_encrypt, WatermarkConfig};
 use std::path::Path;
 
-fn main() -> pptx::Result<()> {
+fn main() -> pptx_rs::Result<()> {
     let input = Path::new("input.ppt");
     let config = WatermarkConfig {
         text: "机密".to_string(),
@@ -154,13 +157,13 @@ cargo run --example watermark_and_protect
 ### .ppt 文件加密（RC4 CryptoAPI）
 
 支持 PowerPoint 97-2003 二进制格式（`.ppt`）的 RC4 CryptoAPI 加密，输出可被 msoffcrypto-python 正确解密。
-**推荐使用 [`pptx::ppt97`](#ppt-97-2003-格式支持库-api) 库 API**，examples 仅作为命令行封装：
+**推荐使用 [`pptx_rs::ppt97`](#ppt-97-2003-格式支持库-api) 库 API**，examples 仅作为命令行封装：
 
 ```bash
-# 仅加密（库 API: pptx::ppt97::encrypt）
+# 仅加密（库 API: pptx_rs::ppt97::encrypt）
 cargo run --example protect_ppt
 
-# 水印+加密（库 API: pptx::ppt97::add_watermark_and_encrypt）
+# 水印+加密（库 API: pptx_rs::ppt97::add_watermark_and_encrypt）
 cargo run --example watermark_and_protect_ppt
 ```
 
@@ -188,7 +191,7 @@ cargo run --example watermark_pptx
 ### .ppt 水印
 
 ```bash
-# 库 API: pptx::ppt97::add_watermark
+# 库 API: pptx_rs::ppt97::add_watermark
 cargo run --example watermark_ppt
 ```
 

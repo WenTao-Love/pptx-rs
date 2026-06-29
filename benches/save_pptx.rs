@@ -1,4 +1,4 @@
-//! 性能基准测试：基础保存场景（TODO-040）。
+﻿//! 性能基准测试：基础保存场景（TODO-040）。
 //!
 //! 建立 pptx-rs 在常见场景下的性能基线，便于后续优化对比。
 //! 运行方式：`cargo bench --bench save_pptx`。
@@ -18,7 +18,7 @@
 //! - 使用 `black_box` 防止编译器优化掉结果。
 
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
-use pptx::{Inches, Presentation};
+use pptx_rs::{Inches, Presentation};
 
 /// 测量 `Presentation::new()` 的开销（OPC 容器初始化 + 默认主题 + 默认母版）。
 fn bench_new_presentation(c: &mut Criterion) {
@@ -90,7 +90,7 @@ fn bench_save_with_shapes(c: &mut Criterion) {
     slide
         .shapes_mut()
         .add_shape(
-            pptx::PresetGeometry::Rectangle,
+            pptx_rs::PresetGeometry::Rectangle,
             Inches(1.0),
             Inches(2.5),
             Inches(3.0),

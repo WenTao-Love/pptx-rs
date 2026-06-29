@@ -1,4 +1,4 @@
-//! OOXML XML 模型层。
+﻿//! OOXML XML 模型层。
 //!
 //! 本模块是 [`crate`] 三个层级中的 **中间层**——OOXML 模型层。
 //! 它负责把 OPC 容器中的"字节内容"反序列化为强类型 Rust 结构，
@@ -65,7 +65,7 @@ pub mod theme;
 pub mod txbody;
 pub mod writer;
 
-// 公共 API 重新导出：让 `pptx::oxml::Color` 等可直接使用。
+// 公共 API 重新导出：让 `pptx_rs::oxml::Color` 等可直接使用。
 pub use chart::{Chart, ChartCategory, ChartData, ChartSeries, ChartType};
 pub use color::{Color, ColorFormat, ColorRole, PresetColor, SchemeColor};
 pub use comments::{Comment, CommentAuthor, CommentAuthorList, CommentList};

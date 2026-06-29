@@ -410,7 +410,7 @@ pub fn aes_256_cbc_decrypt(key: &[u8], iv: &[u8], data: &[u8]) -> Result<Vec<u8>
     if iv.len() != AES_BLOCK_SIZE {
         return Err(Error::encryption("AES IV must be 16 bytes"));
     }
-    if !data.len().is_multiple_of(AES_BLOCK_SIZE) {
+    if data.len() % AES_BLOCK_SIZE != 0 {
         return Err(Error::encryption(
             "ciphertext length must be multiple of 16",
         ));

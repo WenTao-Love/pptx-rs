@@ -17,14 +17,14 @@
 //! # 限制
 //!
 //! - 列宽 / 行高必须显式设置（默认全 0）。
-//! - 表格样式通过 GUID 引用 PowerPoint 内置样式（见 [`TableStyle`]）。
+//! - 表格样式通过 GUID 引用 PowerPoint 内置样式（见 [`crate::oxml::table::TableStyle`]）。
 //!
 //! # 示例
 //!
 //! ```no_run
-//! use pptx::shape::TableShape;
-//! use pptx::EmuExt;
-//! use pptx::Inches;
+//! use pptx_rs::shape::TableShape;
+//! use pptx_rs::EmuExt;
+//! use pptx_rs::Inches;
 //!
 //! let mut t = TableShape::new(2, 3, Inches(2.0).emu(), Inches(0.5).emu());
 //! t.set_cell_text(0, 0, "A1").unwrap();
@@ -57,8 +57,10 @@ impl TableShape {
                 header: false,
             })
             .collect();
-        let mut frame = OxmlFrame::default();
-        frame.graphic = OxmlGraphic::Table(t);
+        let frame = OxmlFrame {
+            graphic: OxmlGraphic::Table(t),
+            ..Default::default()
+        };
         TableShape { frame }
     }
 
@@ -176,8 +178,8 @@ impl TableShape {
     /// # 示例
     ///
     /// ```
-    /// use pptx::shape::TableShape;
-    /// use pptx::Emu;
+    /// use pptx_rs::shape::TableShape;
+    /// use pptx_rs::Emu;
     ///
     /// let mut t = TableShape::new(2, 2, Emu(1000), Emu(500));
     /// assert!(t.set_style("Medium Style 2 - Accent 1"));

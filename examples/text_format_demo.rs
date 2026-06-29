@@ -5,19 +5,19 @@
 //! cargo run --example text_format_demo
 //! ```
 
-use pptx::oxml::Alignment;
-use pptx::oxml::ColorFormat;
-use pptx::oxml::FillFormat;
-use pptx::oxml::Font;
-use pptx::oxml::LineFormat;
-use pptx::oxml::MsoAnchor;
-use pptx::oxml::MsoAutoSize;
-use pptx::oxml::ParagraphFormat;
-use pptx::oxml::TextFrame;
-use pptx::shape::MsoConnectorType;
-use pptx::shape::PresetGeometry;
-use pptx::Presentation;
-use pptx::{EmuExt, Inches, Pt, RGBColor};
+use pptx_rs::oxml::Alignment;
+use pptx_rs::oxml::ColorFormat;
+use pptx_rs::oxml::FillFormat;
+use pptx_rs::oxml::Font;
+use pptx_rs::oxml::LineFormat;
+use pptx_rs::oxml::MsoAnchor;
+use pptx_rs::oxml::MsoAutoSize;
+use pptx_rs::oxml::ParagraphFormat;
+use pptx_rs::oxml::TextFrame;
+use pptx_rs::shape::MsoConnectorType;
+use pptx_rs::shape::PresetGeometry;
+use pptx_rs::Presentation;
+use pptx_rs::{EmuExt, Inches, Pt, RGBColor};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     // 1) 新建空演示文稿
@@ -57,8 +57,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         let r3 = p3.add_run_with_text("第三段：主题色 accent1 + 下划线");
         {
             let mut f = Font::from(&mut r3.properties);
-            f.set_underline(Some(pptx::oxml::Underline::Single));
-            f.color().set_theme(pptx::oxml::MsoThemeColorIndex::Accent1);
+            f.set_underline(Some(pptx_rs::oxml::Underline::Single));
+            f.color()
+                .set_theme(pptx_rs::oxml::MsoThemeColorIndex::Accent1);
         }
         // 文本框级属性（autofit / 垂直对齐）
         tf.set_auto_size(MsoAutoSize::TextToFitShape);
@@ -91,7 +92,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         let mut line = LineFormat::from(props.line.as_mut().unwrap());
         line.color().set_rgb(RGBColor(0x1B, 0x4F, 0x72));
         line.set_width_pt(Pt(2.0));
-        line.set_dash_style(pptx::oxml::MsoLineDashStyle::Dash);
+        line.set_dash_style(pptx_rs::oxml::MsoLineDashStyle::Dash);
     }
 
     // 4) 加一个 connector，让文件不是空
@@ -110,12 +111,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // 6) 验证 ColorFormat 借用语义（只在 release 也可调）
     #[allow(unused_variables)]
-    let mut c: pptx::oxml::color::Color = RGBColor(0x10, 0x20, 0x30).into();
+    let mut c: pptx_rs::oxml::color::Color = RGBColor(0x10, 0x20, 0x30).into();
     {
         let mut cf = ColorFormat::new(&mut c);
-        cf.set_theme(pptx::oxml::MsoThemeColorIndex::Accent3);
+        cf.set_theme(pptx_rs::oxml::MsoThemeColorIndex::Accent3);
     }
-    assert!(matches!(c, pptx::oxml::color::Color::Scheme(_)));
+    assert!(matches!(c, pptx_rs::oxml::color::Color::Scheme(_)));
 
     Ok(())
 }

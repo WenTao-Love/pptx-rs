@@ -327,7 +327,7 @@ fn aes_cbc_encrypt_raw(
 ) -> Result<Vec<u8>, Box<dyn std::error::Error>> {
     use aes::cipher::{BlockEncryptMut, KeyIvInit};
     type Aes256CbcEnc = cbc::Encryptor<aes::Aes256>;
-    if !data.len().is_multiple_of(16) {
+    if data.len() % 16 != 0 {
         return Err(format!("数据长度 {} 不是块大小 16 的整数倍", data.len()).into());
     }
     let mut encryptor = Aes256CbcEnc::new_from_slices(key, iv)?;
@@ -371,7 +371,7 @@ fn encrypt_payload(
         let iv = &iv_full[..16];
 
         // 补齐到块大小
-        let padded_chunk = if !chunk.len().is_multiple_of(16) {
+        let padded_chunk = if chunk.len() % 16 != 0 {
             resize_buffer(chunk, round_up(chunk.len(), 16))
         } else {
             chunk.to_vec()

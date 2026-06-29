@@ -1,4 +1,4 @@
-//! 集成测试：备注 / 批注 / 自定义属性端到端流程（TODO-041）。
+﻿//! 集成测试：备注 / 批注 / 自定义属性端到端流程（TODO-041）。
 //!
 //! 验证 notes / comments / custom_properties / core_properties
 //! 从设置到序列化再加载的完整流程，确保 round-trip 不丢失数据。
@@ -11,8 +11,8 @@
 //! - 自定义属性 5 种类型（Text/Int/Float/Bool/DateTime）
 //! - 核心属性（title/author/keywords）
 
-use pptx::presentation::CustomPropertyValue;
-use pptx::{Inches, Presentation};
+use pptx_rs::presentation::CustomPropertyValue;
+use pptx_rs::{Inches, Presentation};
 use std::io::Read;
 
 /// 辅助函数：从 pptx bytes 中读取指定 part 的文本内容。

@@ -18,10 +18,10 @@
 //! # 示例
 //!
 //! ```no_run
-//! use pptx::shape::{AutoShape, Shape};  // 引入 Shape trait 以使用 set_* 方法
-//! use pptx::oxml::simpletypes::PresetGeometry;
-//! use pptx::EmuExt;
-//! use pptx::Inches;
+//! use pptx_rs::shape::{AutoShape, Shape};  // 引入 Shape trait 以使用 set_* 方法
+//! use pptx_rs::oxml::simpletypes::PresetGeometry;
+//! use pptx_rs::EmuExt;
+//! use pptx_rs::Inches;
 //!
 //! let mut s = AutoShape::new("MyRect", PresetGeometry::Rectangle);
 //! s.set_left(Inches(1.0).emu());
@@ -126,7 +126,7 @@ impl AutoShape {
     /// # 示例
     ///
     /// ```no_run
-    /// # use pptx::{Presentation, ShadowEffect, RGBColor, Color, Pt};
+    /// # use pptx_rs::{Presentation, ShadowEffect, RGBColor, Color, Pt};
     /// # let mut p = Presentation::new().unwrap();
     /// # let counter = p.id_counter();
     /// # let s = p.slides_mut().add_slide(counter).unwrap();
@@ -187,7 +187,7 @@ impl AutoShape {
     /// # 示例
     ///
     /// ```no_run
-    /// # use pptx::{Presentation, Pt};
+    /// # use pptx_rs::{Presentation, Pt};
     /// # let mut p = Presentation::new().unwrap();
     /// # let counter = p.id_counter();
     /// # let s = p.slides_mut().add_slide(counter).unwrap();
@@ -318,7 +318,7 @@ impl AutoShape {
         self.sp.locks = None;
     }
 
-    /// 统一锁定入口：按 [`LockType`] 设置指定锁定（TODO-027 高阶 API）。
+    /// 统一锁定入口：按 [`crate::oxml::shape::LockType`] 设置指定锁定（TODO-027 高阶 API）。
     ///
     /// 对标 python-pptx 风格 `shape.set_lock(MSO_SHAPE_LOCK_TYPE.Select, True)`。
     /// 比 `lock_select` / `lock_move` 等具名方法更通用，可覆盖所有 12 种锁定类型。
@@ -330,7 +330,7 @@ impl AutoShape {
     /// # 示例
     ///
     /// ```no_run
-    /// # use pptx::{Presentation, Pt, LockType};
+    /// # use pptx_rs::{Presentation, Pt, LockType};
     /// # let mut p = Presentation::new().unwrap();
     /// # let counter = p.id_counter();
     /// # let s = p.slides_mut().add_slide(counter).unwrap();

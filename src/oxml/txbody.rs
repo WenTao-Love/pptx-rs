@@ -1,4 +1,4 @@
-//! 文本体（`<p:txBody>`）：段落、Run、字体属性等。
+﻿//! 文本体（`<p:txBody>`）：段落、Run、字体属性等。
 //!
 //! 对应 python-pptx 中 `text.py`/`txbody.py`/`font.py` 三层对象的合并。
 //!
@@ -682,7 +682,7 @@ impl Run {
     ///
     /// # 示例
     /// ```no_run
-    /// # use pptx::oxml::txbody::Run;
+    /// # use pptx_rs::oxml::txbody::Run;
     /// let mut run = Run::new("点击");
     /// run.set_hyperlink("rIdHlink1", Some("打开链接"));
     /// ```
@@ -1081,8 +1081,8 @@ impl Paragraph {
     ///
     /// # 示例
     /// ```no_run
-    /// # use pptx::oxml::txbody::{Paragraph, RunProperties};
-    /// # use pptx::Pt;
+    /// # use pptx_rs::oxml::txbody::{Paragraph, RunProperties};
+    /// # use pptx_rs::Pt;
     /// let mut p = Paragraph::new();
     /// let mut rpr = RunProperties::default();
     /// rpr.size = Some(Pt(24.0));
@@ -1708,7 +1708,7 @@ impl<'a> Font<'a> {
     ///
     /// # 示例
     /// ```no_run
-    /// # use pptx::oxml::txbody::{Run, Font};
+    /// # use pptx_rs::oxml::txbody::{Run, Font};
     /// # let mut run = Run::new("链接文本");
     /// run.font().set_hyperlink("rId1", Some("点击访问"));
     /// ```

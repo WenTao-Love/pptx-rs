@@ -1,7 +1,7 @@
-//! 为 .ppt（PowerPoint 97-2003 二进制格式）文件设置 RC4 CryptoAPI 加密。
+﻿//! 为 .ppt（PowerPoint 97-2003 二进制格式）文件设置 RC4 CryptoAPI 加密。
 //!
-//! 这是一个 **示例程序**，演示如何使用 [`pptx::ppt97::encrypt`] 库 API
-//! 为 .ppt 文件批量加密。实际的加密逻辑已封装到 [`pptx::ppt97`] 模块中。
+//! 这是一个 **示例程序**，演示如何使用 [`pptx_rs::ppt97::encrypt`] 库 API
+//! 为 .ppt 文件批量加密。实际的加密逻辑已封装到 [`pptx_rs::ppt97`] 模块中。
 //!
 //! # 加密参数
 //!
@@ -23,7 +23,7 @@
 
 use std::path::Path;
 
-use pptx::ppt97::encrypt;
+use pptx_rs::ppt97::encrypt;
 
 /// 默认密码（与 README.md 中记载一致）。
 const PASSWORD: &str = "pptx-rs-secret";

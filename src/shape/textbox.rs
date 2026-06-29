@@ -1,4 +1,4 @@
-//! `TextBox`：纯文本框（`<p:sp>` + `prstGeom="rect"` + `txBody`）。
+﻿//! `TextBox`：纯文本框（`<p:sp>` + `prstGeom="rect"` + `txBody`）。
 //!
 //! 与 [`AutoShape`] 区别在于：[`TextBox`] 强制 `prstGeom=rect`、bodyPr
 //! 默认无填充无外框，更接近"传统文本框"语义。
@@ -17,7 +17,7 @@
 //! # 示例
 //!
 //! ```no_run
-//! use pptx::shape::TextBox;
+//! use pptx_rs::shape::TextBox;
 //!
 //! let mut tb = TextBox::new("MyTextBox");
 //! tb.set_text("Hello\nWorld");

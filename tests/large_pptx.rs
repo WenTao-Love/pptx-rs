@@ -1,4 +1,4 @@
-//! 集成测试：大型 PPTX 读写（TODO-041）。
+﻿//! 集成测试：大型 PPTX 读写（TODO-041）。
 //!
 //! 验证 pptx-rs 在 100+ slides 场景下的读写稳定性，确保：
 //!
@@ -12,7 +12,7 @@
 //! 这些测试可能较慢（生成 100 张幻灯片 + 序列化），在 CI 上属于"重资源测试"。
 //! 如果需要跳过，可用 `cargo test -- --skip large_pptx`。
 
-use pptx::{Inches, Presentation, PresetGeometry};
+use pptx_rs::{Inches, Presentation, PresetGeometry};
 
 /// 构造一个包含 `n` 张幻灯片的 Presentation，每张含 1 文本框 + 1 矩形。
 fn build_large_presentation(n: usize) -> Presentation {

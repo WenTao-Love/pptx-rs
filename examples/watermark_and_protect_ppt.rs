@@ -1,8 +1,8 @@
-//! 同时为 .ppt 文件注入水印和加密。
+﻿//! 同时为 .ppt 文件注入水印和加密。
 //!
-//! 这是一个 **示例程序**，演示如何使用 [`pptx::ppt97::add_watermark_and_encrypt`]
+//! 这是一个 **示例程序**，演示如何使用 [`pptx_rs::ppt97::add_watermark_and_encrypt`]
 //! 库 API 一步到位地为 .ppt 文件同时注入水印和加密。实际的逻辑已封装到
-//! [`pptx::ppt97`] 模块中。
+//! [`pptx_rs::ppt97`] 模块中。
 //!
 //! # 处理顺序
 //!
@@ -37,7 +37,7 @@
 
 use std::path::Path;
 
-use pptx::ppt97::{add_watermark_and_encrypt, WatermarkConfig};
+use pptx_rs::ppt97::{add_watermark_and_encrypt, WatermarkConfig};
 
 /// 默认密码（与 README.md 中记载一致）。
 const PASSWORD: &str = "pptx-rs-secret";

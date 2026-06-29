@@ -1,4 +1,4 @@
-//! 表格：`<a:tbl>` 嵌入 `<p:graphicFrame>`。
+﻿//! 表格：`<a:tbl>` 嵌入 `<p:graphicFrame>`。
 //!
 //! OOXML 中"表格"由三层结构组成：
 //!
@@ -174,7 +174,7 @@ impl Default for TableLook {
 /// # 示例
 ///
 /// ```
-/// use pptx::oxml::table::TableStyle;
+/// use pptx_rs::oxml::table::TableStyle;
 ///
 /// // 按名称查找内置样式
 /// let style = TableStyle::from_name("Medium Style 2 - Accent 1").unwrap();
@@ -440,7 +440,7 @@ impl Table {
     ///
     /// # 示例
     /// ```
-    /// use pptx::oxml::table::Table;
+    /// use pptx_rs::oxml::table::Table;
     ///
     /// let mut t = Table::default();
     /// assert!(t.set_style("Medium Style 2 - Accent 1"));

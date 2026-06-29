@@ -1,4 +1,4 @@
-//! 单位、基本类型与颜色。
+﻿//! 单位、基本类型与颜色。
 //!
 //! 本模块集中管理 `pptx-rs` 中所有"非 OOXML 强类型但又频繁使用"的小型数据载体。
 //! 它是 `crate::lib` 中"高阶 API 层"与"OPC / OOXML 模型层"之间的语义桥梁。
@@ -48,7 +48,7 @@
 //! # 示例
 //!
 //! ```
-//! use pptx::{Emu, Inches, Pt, Cm, EmuExt, RGBColor};
+//! use pptx_rs::{Emu, Inches, Pt, Cm, EmuExt, RGBColor};
 //!
 //! // 隐式单位转换
 //! let w: Emu = Inches(8.5).emu();
@@ -89,7 +89,7 @@ impl Emu {
     ///
     /// # 示例
     /// ```
-    /// use pptx::Emu;
+    /// use pptx_rs::Emu;
     /// let off = Emu::new(914_400);
     /// assert_eq!(off.value(), 914_400);
     /// ```

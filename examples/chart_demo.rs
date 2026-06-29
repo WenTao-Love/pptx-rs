@@ -1,4 +1,4 @@
-//! # 端到端示例：在幻灯片中添加图表（TODO-004 基础图表 + 进阶图表支持）
+﻿//! # 端到端示例：在幻灯片中添加图表（TODO-004 基础图表 + 进阶图表支持）
 //!
 //! 演示 `pptx-rs` 的图表 API：
 //!
@@ -21,8 +21,8 @@
 //! - 每个图表通过 `<c:chart r:id="..."/>` 引用独立的 `/ppt/charts/chartN.xml` part；
 //! - 数据通过 `<c:numCache>` 内嵌，PowerPoint / WPS 打开后可直接编辑数据。
 
-use pptx::oxml::chart::{ChartCategory, ChartData, ChartSeries, ChartType};
-use pptx::{Inches, Presentation};
+use pptx_rs::oxml::chart::{ChartCategory, ChartData, ChartSeries, ChartType};
+use pptx_rs::{Inches, Presentation};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     // ---------- 1) 新建演示文稿 ----------

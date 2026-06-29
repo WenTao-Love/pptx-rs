@@ -1,4 +1,4 @@
-//! OPC（Open Packaging Convention）容器层。
+﻿//! OPC（Open Packaging Convention）容器层。
 //!
 //! `.pptx` 本质上是一个 **zip 包**，其内部由若干个 **Part** 组成，
 //! Part 之间通过 **Relationship**（关系）相互链接。本模块提供与
@@ -37,7 +37,7 @@
 //! # 示例
 //!
 //! ```no_run
-//! use pptx::opc::{OpcPackage, Part, PartName};
+//! use pptx_rs::opc::{OpcPackage, Part, PartName};
 //!
 //! let mut pkg = OpcPackage::new();
 //! let xml = b"<?xml version=\"1.0\"?><root/>".to_vec();
@@ -52,7 +52,7 @@ pub mod package;
 pub mod part;
 pub mod rels;
 
-// 公共 API 重新导出：让 `pptx::opc::OpcPackage` 等可直接使用，
+// 公共 API 重新导出：让 `pptx_rs::opc::OpcPackage` 等可直接使用，
 // 不必记忆模块嵌套路径。
 pub use content_types::{ContentTypes, DefaultExt, Override};
 pub use package::{ct, OpcPackage};

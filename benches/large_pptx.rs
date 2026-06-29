@@ -1,4 +1,4 @@
-//! 性能基准测试：大型 PPTX 场景（TODO-040）。
+﻿//! 性能基准测试：大型 PPTX 场景（TODO-040）。
 //!
 //! 建立 pptx-rs 在 100+ slides 场景下的性能基线，定位"大文件"瓶颈。
 //! 运行方式：`cargo bench --bench large_pptx`。
@@ -16,7 +16,7 @@
 //! - 500 slides 场景可能较慢，建议用 `--bench large_pptx -- --sample-size 10` 降低采样数。
 
 use criterion::{black_box, criterion_group, criterion_main, BenchmarkId, Criterion};
-use pptx::{Inches, Presentation, PresetGeometry};
+use pptx_rs::{Inches, Presentation, PresetGeometry};
 
 /// 构造一个包含 `n` 张幻灯片的 Presentation，每张幻灯片含 1 文本框 + 1 矩形。
 ///

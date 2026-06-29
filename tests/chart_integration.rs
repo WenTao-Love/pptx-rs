@@ -1,4 +1,4 @@
-//! 集成测试：图表端到端 round-trip（TODO-041）。
+﻿//! 集成测试：图表端到端 round-trip（TODO-041）。
 //!
 //! 验证 6 种图表类型（柱状图 / 条形图 / 折线图 / 饼图 / 散点图 / 面积图）
 //! 从添加到序列化再加载的完整流程，确保 chartN.xml part 正确生成。
@@ -13,8 +13,8 @@
 //! - 面积图（Area）round-trip
 //! - 多图表混合在单 slide
 
-use pptx::oxml::chart::{ChartCategory, ChartData, ChartSeries, ChartType};
-use pptx::{Inches, Presentation};
+use pptx_rs::oxml::chart::{ChartCategory, ChartData, ChartSeries, ChartType};
+use pptx_rs::{Inches, Presentation};
 
 /// 辅助函数：构造一份简单的柱状图数据。
 fn make_column_data() -> ChartData {

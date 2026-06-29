@@ -1,4 +1,4 @@
-//! # 端到端示例：创建并保存一个完整的 `.pptx` 文件
+﻿//! # 端到端示例：创建并保存一个完整的 `.pptx` 文件
 //!
 //! 该示例演示了 `pptx-rs` 顶层 API 的核心用法：
 //!
@@ -26,14 +26,14 @@
 //!
 //! # 设计要点
 //!
-//! - **位置/尺寸单位**：用 [`pptx::Inches`] 表示 1 英寸 = 914 400 EMU；
-//!   也可用 [`pptx::Cm`] / [`pptx::Pt`] / [`pptx::Emu`]。所有单位都实现了
+//! - **位置/尺寸单位**：用 [`pptx_rs::Inches`] 表示 1 英寸 = 914 400 EMU；
+//!   也可用 [`pptx_rs::Cm`] / [`pptx_rs::Pt`] / [`pptx_rs::Emu`]。所有单位都实现了
 //!   `EmuExt` trait，可在 API 边界自由混用。
 //! - **id_counter**：`Presentation::id_counter()` 返回的 `Rc<Cell<u32>>` **必须**
 //!   透传给 `slides_mut().add_slide(counter)`，否则所有 shape 共享同一 id（PowerPoint 会报"Invalid shape id"）。
 //! - **可变性**：所有 mutation 走 `*_mut()` 入口，借用检查在编译期保证。
 
-use pptx::{Inches, Presentation, Pt, RGBColor};
+use pptx_rs::{Inches, Presentation, Pt, RGBColor};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     // ---------- 1) 新建演示文稿 ----------
@@ -69,14 +69,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // ---------- 5) 添加一个椭圆自选形状 ----------
     // PresetGeometry 是枚举，覆盖 OOXML 全部预设几何（rect/ellipse/arrow/...）。
     let mut shape = slide.shapes_mut().add_shape(
-        pptx::oxml::simpletypes::PresetGeometry::Ellipse,
+        pptx_rs::oxml::simpletypes::PresetGeometry::Ellipse,
         Inches(1.0),
         Inches(3.0),
         Inches(3.0),
         Inches(2.0),
     )?;
     // Fill::Solid 包一个 Color；此处用 RGBColor 的 From 实现直接 .into()。
-    shape.set_fill(pptx::oxml::sppr::Fill::Solid(
+    shape.set_fill(pptx_rs::oxml::sppr::Fill::Solid(
         RGBColor(0xE7, 0x4C, 0x3C).into(),
     ));
 

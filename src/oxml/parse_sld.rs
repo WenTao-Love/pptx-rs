@@ -5959,7 +5959,7 @@ fn parse_sections_from_ext_lst(xml: &str) -> crate::Result<crate::oxml::section:
     Ok(result)
 }
 
-/// 从 `slideMasterN.xml` 文本解析出 [`SldMaster`]。
+/// 从 `slideMasterN.xml` 文本解析出 `SldMaster`。
 ///
 /// # 解析内容
 /// - `<p:spTree>` 内的所有 `<p:sp>`（其它子类型如 pic/grpSp 暂不解析，保留位置）
@@ -6125,7 +6125,7 @@ pub fn parse_notes_master(xml: &str) -> crate::Result<crate::oxml::notesmaster::
     Ok(master)
 }
 
-/// 从 `slideLayoutN.xml` 文本解析出 [`SldLayout`]。
+/// 从 `slideLayoutN.xml` 文本解析出 `SldLayout`。
 ///
 /// # 解析内容
 /// - `<p:sldLayout type="...">` 根元素的 `type` 属性
@@ -6212,7 +6212,7 @@ pub fn parse_sld_layout(xml: &str) -> crate::Result<crate::oxml::slidelayout::Sl
     Ok(layout)
 }
 
-/// 从 `themeN.xml` 文本解析出 [`Theme`]。
+/// 从 `themeN.xml` 文本解析出 `Theme`。
 ///
 /// # 解析内容
 /// - `<a:theme name="...">` 根元素的 `name` 属性

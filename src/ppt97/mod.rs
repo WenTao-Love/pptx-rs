@@ -1,4 +1,4 @@
-//! PowerPoint 97-2003 二进制格式（`.ppt`）支持模块。
+﻿//! PowerPoint 97-2003 二进制格式（`.ppt`）支持模块。
 //!
 //! 本模块为 PowerPoint 97-2003 二进制格式（`.ppt`）文件提供**水印注入**
 //! 与 **RC4 CryptoAPI 加密**能力。`.ppt` 文件使用 OLE2/CFB 容器 + 二进制
@@ -33,7 +33,7 @@
 //! # 示例
 //!
 //! ```no_run
-//! use pptx::ppt97::{add_watermark, encrypt, add_watermark_and_encrypt, watermark::WatermarkConfig};
+//! use pptx_rs::ppt97::{add_watermark, encrypt, add_watermark_and_encrypt, watermark::WatermarkConfig};
 //! use std::path::Path;
 //!
 //! // 仅加水印
@@ -227,7 +227,7 @@ fn write_back_streams(
 /// # 示例
 ///
 /// ```no_run
-/// use pptx::ppt97::{add_watermark, WatermarkConfig};
+/// use pptx_rs::ppt97::{add_watermark, WatermarkConfig};
 ///
 /// let config = WatermarkConfig {
 ///     text: "机密".to_string(),
@@ -235,7 +235,7 @@ fn write_back_streams(
 /// };
 /// let data = add_watermark(std::path::Path::new("input.ppt"), &config)?;
 /// std::fs::write("watermarked.ppt", &data)?;
-/// # Ok::<(), pptx::Error>(())
+/// # Ok::<(), pptx_rs::Error>(())
 /// ```
 pub fn add_watermark(input_path: &Path, config: &WatermarkConfig) -> Result<Vec<u8>> {
     // 读取原始文件
@@ -320,11 +320,11 @@ pub fn add_watermark(input_path: &Path, config: &WatermarkConfig) -> Result<Vec<
 /// # 示例
 ///
 /// ```no_run
-/// use pptx::ppt97::encrypt;
+/// use pptx_rs::ppt97::encrypt;
 ///
 /// let data = encrypt(std::path::Path::new("input.ppt"), "my-password")?;
 /// std::fs::write("encrypted.ppt", &data)?;
-/// # Ok::<(), pptx::Error>(())
+/// # Ok::<(), pptx_rs::Error>(())
 /// ```
 pub fn encrypt(input_path: &Path, password: &str) -> Result<Vec<u8>> {
     // 读取原始文件
@@ -371,7 +371,7 @@ pub fn encrypt(input_path: &Path, password: &str) -> Result<Vec<u8>> {
 /// # 示例
 ///
 /// ```no_run
-/// use pptx::ppt97::{add_watermark_and_encrypt, WatermarkConfig};
+/// use pptx_rs::ppt97::{add_watermark_and_encrypt, WatermarkConfig};
 ///
 /// let config = WatermarkConfig::default();
 /// let data = add_watermark_and_encrypt(
@@ -380,7 +380,7 @@ pub fn encrypt(input_path: &Path, password: &str) -> Result<Vec<u8>> {
 ///     "my-password",
 /// )?;
 /// std::fs::write("both.ppt", &data)?;
-/// # Ok::<(), pptx::Error>(())
+/// # Ok::<(), pptx_rs::Error>(())
 /// ```
 pub fn add_watermark_and_encrypt(
     input_path: &Path,

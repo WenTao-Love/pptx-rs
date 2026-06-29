@@ -7,7 +7,7 @@
 //! # 与 python-pptx 的对应
 //!
 //! - `pptx.oxml.theme.Theme` ←→ [`Theme`] 结构体（v0.2 起支持结构化解析）；
-//! - `pptx.parts.theme.ThemePart._element` 在加载时由 [`parse_theme`] 解析为 [`Theme`]；
+//! - `pptx.parts.theme.ThemePart._element` 在加载时由 `parse_theme` 解析为 [`Theme`]；
 //! - 写路径使用 [`Theme::to_xml`]（结构化序列化）或 [`default_theme_xml`]（完整 Office 主题 XML）。
 //!
 //! # 字体脚本表

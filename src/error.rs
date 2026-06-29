@@ -1,11 +1,11 @@
-//! 错误类型与 `Result` 别名。
+﻿//! 错误类型与 `Result` 别名。
 //!
 //! 本模块是整个 `pptx-rs` crate 的错误处理中枢。它做三件事：
 //!
 //! 1. **统一错误类型** [`enum@Error`]：使用 `thiserror` 派生，将底层 `std::io::Error` /
 //!    `zip::result::ZipError` / 自定义字符串错误统一成一个枚举，方便上层 `?` 传播。
 //! 2. **统一 Result 别名** [`Result<T>`]：所有公共 API（除特别声明）均返回该别名，
-//!    调用方不必书写冗长的 `Result<T, pptx::Error>`。
+//!    调用方不必书写冗长的 `Result<T, pptx_rs::Error>`。
 //! 3. **便捷构造器**：在 `Error` 上提供 `opc(...)` / `oxml(...)` / `not_implemented(...)`
 //!    等关联函数，使错误抛出更可读，并隐含语义归类。
 //!
@@ -28,7 +28,7 @@
 //! # 示例
 //!
 //! ```no_run
-//! use pptx::{Error, Result};
+//! use pptx_rs::{Error, Result};
 //!
 //! fn read_slide() -> Result<()> {
 //!     let p = std::fs::File::open("missing.pptx")?;  // io::Error 自动转 Error::Io
@@ -46,12 +46,12 @@ use thiserror::Error;
 /// 库统一 `Result` 别名。
 ///
 /// 简化签名书写，所有公共 API（除特别声明）均使用该别名，等价于
-/// `std::result::Result<T, pptx::Error>`。
+/// `std::result::Result<T, pptx_rs::Error>`。
 ///
 /// # 示例
 ///
 /// ```no_run
-/// use pptx::Result;
+/// use pptx_rs::Result;
 ///
 /// fn read_something() -> Result<String> { Ok(String::new()) }
 /// ```

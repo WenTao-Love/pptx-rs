@@ -1,4 +1,4 @@
-//! # 端到端示例：在幻灯片中嵌入 OLE 对象（TODO-043）
+﻿//! # 端到端示例：在幻灯片中嵌入 OLE 对象（TODO-043）
 //!
 //! 演示 `pptx-rs` 的 OLE 嵌入 API：
 //!
@@ -28,7 +28,7 @@
 //! 并设置对应的 `prog_id`（如 `"Excel.Sheet.12"` / `"Word.Document.12"` / `"Package"`）。
 //! PowerPoint 双击 OLE 对象时会调用对应 OLE 服务器打开编辑。
 
-use pptx::{Inches, Presentation};
+use pptx_rs::{Inches, Presentation};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     // ---------- 1) 新建演示文稿 ----------

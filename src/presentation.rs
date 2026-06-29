@@ -32,8 +32,8 @@
 //! # 示例
 //!
 //! ```no_run
-//! use pptx::Presentation;
-//! use pptx::Inches;
+//! use pptx_rs::Presentation;
+//! use pptx_rs::Inches;
 //!
 //! let mut p = Presentation::new().unwrap();
 //! let counter = p.id_counter();
@@ -241,8 +241,8 @@ impl CustomPropertyValue {
 /// # 示例
 ///
 /// ```no_run
-/// use pptx::Presentation;
-/// use pptx::presentation::CustomPropertyValue;
+/// use pptx_rs::Presentation;
+/// use pptx_rs::presentation::CustomPropertyValue;
 ///
 /// let mut p = Presentation::new().unwrap();
 /// p.custom_properties_mut().set("Project", CustomPropertyValue::Text("Demo".to_string()));
@@ -694,7 +694,7 @@ impl DiagramEntry {
     /// # 示例
     ///
     /// ```no_run
-    /// # use pptx::presentation::DiagramEntry;
+    /// # use pptx_rs::presentation::DiagramEntry;
     /// # let entry: DiagramEntry = unimplemented!();
     /// let data_model = entry.data_model().expect("parse data part");
     /// for pt in &data_model.points {
@@ -726,7 +726,7 @@ impl DiagramEntry {
         crate::oxml::diagram::ColorsDef::parse_from_xml(&self.colors_xml)
     }
 
-    /// 把修改后的 [`DataModel`] 写回 `data_xml` 字段（TODO-037 文本节点编辑）。
+    /// 把修改后的 [`crate::oxml::diagram::DataModel`] 写回 `data_xml` 字段（TODO-037 文本节点编辑）。
     ///
     /// 典型用法：调用方先通过 [`DiagramEntry::data_model`] 解析得到 `DataModel`，
     /// 修改节点文本（如 `set_point_text`），再调用本方法把修改写回 `data_xml`，
@@ -738,7 +738,7 @@ impl DiagramEntry {
     /// # 示例
     ///
     /// ```no_run
-    /// # use pptx::presentation::DiagramEntry;
+    /// # use pptx_rs::presentation::DiagramEntry;
     /// # let entry: DiagramEntry = unimplemented!();
     /// let mut dm = entry.data_model().expect("parse");
     /// dm.set_point_text(1, "新文本");
@@ -1498,7 +1498,7 @@ impl Presentation {
     ///
     /// # 示例
     /// ```no_run
-    /// use pptx::Presentation;
+    /// use pptx_rs::Presentation;
     /// let mut p = Presentation::new().unwrap();
     /// let counter = p.id_counter();
     /// let _ = p.slides_mut().add_slide(counter).unwrap();
@@ -1591,8 +1591,8 @@ impl Presentation {
     /// # 示例
     ///
     /// ```no_run
-    /// use pptx::Presentation;
-    /// use pptx::presentation::CustomPropertyValue;
+    /// use pptx_rs::Presentation;
+    /// use pptx_rs::presentation::CustomPropertyValue;
     ///
     /// let mut p = Presentation::new().unwrap();
     /// p.custom_properties_mut().set("Project", CustomPropertyValue::Text("Demo".to_string()));
@@ -1616,7 +1616,7 @@ impl Presentation {
     /// # 示例
     ///
     /// ```no_run
-    /// use pptx::Presentation;
+    /// use pptx_rs::Presentation;
     ///
     /// let mut p = Presentation::new().unwrap();
     /// let author_id = p.comment_authors_mut().get_or_insert_id("张三", "ZS");
@@ -1646,8 +1646,8 @@ impl Presentation {
     /// # 示例
     ///
     /// ```no_run
-    /// use pptx::Presentation;
-    /// use pptx::oxml::section::Section;
+    /// use pptx_rs::Presentation;
+    /// use pptx_rs::oxml::section::Section;
     ///
     /// let mut p = Presentation::new().unwrap();
     /// // 假设已添加 2 张 slide，它们的 sld_id 分别为 256 / 257
@@ -1673,7 +1673,7 @@ impl Presentation {
     /// # 示例
     ///
     /// ```no_run
-    /// use pptx::Presentation;
+    /// use pptx_rs::Presentation;
     ///
     /// let p = Presentation::new().unwrap();
     /// // 空白文档无备注母版
@@ -1705,7 +1705,7 @@ impl Presentation {
     /// # 示例
     ///
     /// ```no_run
-    /// use pptx::Presentation;
+    /// use pptx_rs::Presentation;
     /// let mut p = Presentation::new().unwrap();
     /// p.set_metadata(
     ///     Some("My Presentation"),  // title

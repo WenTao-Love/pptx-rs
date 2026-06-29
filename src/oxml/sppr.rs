@@ -1,4 +1,4 @@
-//! 形状属性：`<p:spPr>`（几何、变换、填充、线）。
+﻿//! 形状属性：`<p:spPr>`（几何、变换、填充、线）。
 //!
 //! `spPr` 是所有视觉形状（sp/pic/grpSp/cxnSp）共享的元素；它包含：
 //!
@@ -1428,9 +1428,9 @@ impl<'a> FillFormat<'a> {
     ///
     /// # 示例
     /// ```ignore
-    /// use pptx::oxml::{Fill, GradientStop, GradientType};
-    /// use pptx::units::RGBColor;
-    /// use pptx::oxml::color::Color;
+    /// use pptx_rs::oxml::{Fill, GradientStop, GradientType};
+    /// use pptx_rs::units::RGBColor;
+    /// use pptx_rs::oxml::color::Color;
     ///
     /// let mut fill = Fill::Inherit;
     /// let mut fmt = FillFormat::new(&mut fill);

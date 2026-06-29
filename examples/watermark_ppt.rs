@@ -1,8 +1,8 @@
-//! 为 .ppt（PowerPoint 97-2003 二进制格式）文件注入水印。
+﻿//! 为 .ppt（PowerPoint 97-2003 二进制格式）文件注入水印。
 //!
-//! 这是一个 **示例程序**，演示如何使用 [`pptx::ppt97::add_watermark`] 库 API
+//! 这是一个 **示例程序**，演示如何使用 [`pptx_rs::ppt97::add_watermark`] 库 API
 //! 为 .ppt 文件批量注入水印。实际的水印注入逻辑已封装到
-//! [`pptx::ppt97`] 模块中。
+//! [`pptx_rs::ppt97`] 模块中。
 //!
 //! # 水印特性
 //!
@@ -22,7 +22,7 @@
 
 use std::path::Path;
 
-use pptx::ppt97::{add_watermark, WatermarkConfig};
+use pptx_rs::ppt97::{add_watermark, WatermarkConfig};
 
 /// 批量为 `_test/` 目录下的 .ppt 文件注入水印。
 fn main() -> Result<(), Box<dyn std::error::Error>> {
