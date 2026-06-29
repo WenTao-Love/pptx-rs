@@ -279,7 +279,105 @@ println!("to_bytes = {:?}", start.elapsed());
 - 大量 `String` 用 `with_capacity`（已用）。
 - 批量 IO（`zip::start_file` 一次一个 part）。
 
-## 8. 发布流程
+## 8. 双仓库工作流与发布流程
+
+### 8.1 双仓库架构
+
+本项目同时使用两个 git remote，**可见性不同，用途不同**：
+
+| remote | URL | 可见性 | 用途 |
+| --- | --- | --- | --- |
+| `github` | `https://github.com/WenTao-Love/pptx-rs.git` | **公开** | crates.io 发布配套源码、社区协作 |
+| `origin` | `https://gitcode.com/szlaoxu/realtime-screen-ocr.git` | **私有** | 日常开发、自用、含业务测试样本 |
+
+> ⚠️ **关键区别**：`github` 是公开仓库，**任何提交的内容都会被全世界看到**（含爬虫/快照）；
+> `origin` 是私有仓库，保密性强，可放心存放业务测试样本。
+
+父仓库 `realtime-screen-ocr-rust` 同时管理 pptx-rs 及其他子项目。`pptx-rs-github` 分支
+是专门用于推送到公开 GitHub 的独立分支，**不包含业务测试样本和敏感文件**。
+
+#### 工作流
+
+```text
+日常开发        → 父仓库 rust 分支（推到 origin 私有仓库，含 _test/ 业务样本）
+更新公开仓库    → pptx-rs-github 分支（推到 github 公开仓库，仅源码）
+发布到 crates.io → cargo publish（仅打包 src/ 等必要文件）
+```
+
+### 8.2 安全红线（⚠️ 血的教训）
+
+> **2026-06-29 事故复盘**：
+> 明文密码文件 `_ssh_pass.bat` / `_ssh_run.ps1`（含 VirtualBox 密码 `Xwt@113806`）
+> 和业务测试样本 `_test/心理账户理论.ppt` / `_test/文旅IP人设打造抖音短视频运营方案.pptx`
+> 通过 `git subtree split --prefix=pptx-rs` 被打包到 `pptx-rs-github` 分支并推送到公开 GitHub。
+> 此外 commit `7b8274c` 的 message 含非专业表述（直接把对话内容当 commit message）。
+>
+> **影响**：密码在公开环境暴露过（即使已清理，仍可能被爬虫/快照抓取），需更改密码。
+>
+> **处置**：通过 `git filter-branch --index-filter` + `--msg-filter` 重写历史并 force push；
+> 父仓库执行 `git rm --cached` 移除跟踪；.gitignore 补全忽略规则。
+
+#### 绝对禁止（⚠️ 红线）
+
+| 禁止项 | 原因 | 正确做法 |
+| --- | --- | --- |
+| 提交明文密码/密钥文件到 git | 公开仓库被爬虫秒抓 | 用环境变量 / `.env`（.gitignore 忽略） |
+| 提交业务测试样本到公开仓库 | 文件名含业务信息 | `_test/` 已在 .gitignore 忽略，已 `git rm --cached` |
+| 用 `git subtree split` 推送到 GitHub | 父仓库历史中的敏感文件会重新暴露 | 直接在 `pptx-rs-github` 分支上开发 |
+| commit message 写非专业表述 | 公开仓库会被社区看到 | 遵循 Conventional Commits（见 [project_rules.md §8.2](../.trae/rules/project_rules.md)） |
+| 将 `_ssh_pass.bat` / `_ssh_run.ps1` / `_askpass.bat` 加入 git | 含明文 SSH 密码 | 已在 .gitignore 忽略，绝不入库 |
+
+#### .gitignore 已忽略的敏感文件
+
+见父仓库根目录 `.gitignore` 的 "pptx-rs" 段落：
+
+```gitignore
+# SSH 辅助文件（含明文密码/敏感连接信息，绝不入库）
+/pptx-rs/_askpass.bat
+/pptx-rs/_ssh_pass.bat
+/pptx-rs/_ssh_run.ps1
+```
+
+> 注：`_test/` 目录下的业务测试样本已通过 `git rm --cached` 从父仓库 git 跟踪中移除（本地文件保留），
+> 防止 `git subtree split` 时被重新打包到公开分支。如需在 gitcode 私有仓库中跟踪，可 `git add _test/`
+> 重新添加（gitcode 保密性强，可接受）；但**绝不**用 `git subtree split` 推送到公开 GitHub。
+
+#### 更新公开仓库代码的正确方式
+
+```powershell
+# ✅ 正确：直接在 pptx-rs-github 分支上开发
+git checkout pptx-rs-github
+# ... 修改代码 ...
+git add .
+git commit -m "feat(xxx): ..."
+git push github pptx-rs-github:main
+```
+
+```powershell
+# ❌ 错误：用 subtree split（会重新暴露父仓库历史中的敏感文件）
+# git subtree split --prefix=pptx-rs
+# git push github pptx-rs-github:main
+```
+
+#### 如果敏感信息已暴露到公开仓库
+
+1. **立即更改密码**（即使后续清理了历史，密码可能已被抓取）
+2. 用 `git filter-branch` 重写历史：
+   ```bash
+   # 同时删除文件 + 修改 commit message
+   FILTER_BRANCH_SQUELCH_WARNING=1 git filter-branch --force \
+     --index-filter 'git rm -r --cached --ignore-unmatch <敏感文件路径>' \
+     --msg-filter 'if [ "$GIT_COMMIT" = "<commit-hash>" ]; then printf "规范的 commit message"; else cat; fi' \
+     --prune-empty \
+     <分支名>
+   ```
+3. `git push -f github <分支名>:main`（force push 覆盖远端历史）
+4. 父仓库执行 `git rm --cached <敏感文件>` + 更新 .gitignore + commit
+5. 通知所有 clone 过该仓库的协作者重新 clone（旧历史已失效）
+
+> ⚠️ force push 是不可逆操作，执行前务必备份分支：`git branch -f <分支名>-backup <分支名>`
+
+### 8.3 发布流程
 
 1. 确认 `develop` 上 CI 绿、PR 全部合并。
 2. `cargo update`（允许锁文件前进）。
@@ -290,7 +388,7 @@ println!("to_bytes = {:?}", start.elapsed());
 7. `git tag -a v0.x.y -m "v0.x.y"`。
 8. `cargo publish --dry-run`。
 9. `cargo publish`。
-10. 推 tag：`git push origin v0.x.y`。
+10. 推 tag：`git push github v0.x.y`（注意：推到 `github` 公开仓库，不是 `origin`）。
 11. 写 GitHub Release。
 
 ## 9. IDE 集成
